@@ -33,11 +33,11 @@ import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.BlueBg
 import com.traveloka.hotel.ui.theme.Grey
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
-import com.traveloka.hotel.widgets.button.MButton
-import com.traveloka.hotel.widgets.form.DateField
-import com.traveloka.hotel.widgets.form.EmailField
-import com.traveloka.hotel.widgets.form.PasswordField
-import com.traveloka.hotel.widgets.form.RadioField
+import com.traveloka.hotel.ui.widgets.button.MButton
+import com.traveloka.hotel.ui.widgets.form.DateField
+import com.traveloka.hotel.ui.widgets.form.EmailField
+import com.traveloka.hotel.ui.widgets.form.PasswordField
+import com.traveloka.hotel.ui.widgets.form.RadioField
 
 
 @Composable

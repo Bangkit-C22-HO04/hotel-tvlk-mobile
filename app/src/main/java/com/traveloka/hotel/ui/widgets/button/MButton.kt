@@ -1,4 +1,4 @@
-package com.traveloka.hotel.widgets.button
+package com.traveloka.hotel.ui.widgets.button
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues

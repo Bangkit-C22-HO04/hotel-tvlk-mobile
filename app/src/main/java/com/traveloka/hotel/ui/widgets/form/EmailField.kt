@@ -1,4 +1,4 @@
-package com.traveloka.hotel.widgets.form
+package com.traveloka.hotel.ui.widgets.form
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

@@ -1,4 +1,4 @@
-package com.traveloka.hotel.widgets.form
+package com.traveloka.hotel.ui.widgets.form
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
