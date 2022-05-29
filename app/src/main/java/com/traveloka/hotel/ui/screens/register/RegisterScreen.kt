@@ -1,4 +1,4 @@
-package com.traveloka.hotel.screens.register
+package com.traveloka.hotel.ui.screens.register
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

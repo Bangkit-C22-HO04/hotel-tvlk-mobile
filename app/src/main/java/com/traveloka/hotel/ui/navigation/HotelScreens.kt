@@ -1,4 +1,4 @@
-package com.traveloka.hotel.navigation
+package com.traveloka.hotel.ui.navigation
 
 enum class HotelScreens {
     HomeScreen,
