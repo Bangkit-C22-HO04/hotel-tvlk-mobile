@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -27,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.traveloka.hotel.R
 import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.BlueBg
 import com.traveloka.hotel.ui.theme.Grey
@@ -76,11 +78,11 @@ fun RegisterHeader() {
                 imageVector = Icons.Default.ArrowBack,
                 tint = Color.White,
                 modifier = Modifier.size(30.dp),
-                contentDescription = "Movie Image"
+                contentDescription = stringResource(R.string.back_to_intro)
             )
         }
         Text(
-            text = "Register",
+            text = stringResource(R.string.register),
             style = MaterialTheme.typography.h5,
             color = Color.White,
             fontWeight = FontWeight.Bold
@@ -99,12 +101,12 @@ fun RegisterBody() {
     ) {
 
         Text(
-            text = "Welcome",
+            text = stringResource(R.string.welcome),
             style = MaterialTheme.typography.h5,
             fontWeight = FontWeight.Bold
         )
         Text(
-            text = "Create an account, It’s free",
+            text = stringResource(R.string.create_an_account),
             style = MaterialTheme.typography.subtitle1,
             color = Grey
         )
@@ -115,15 +117,16 @@ fun RegisterBody() {
         Text(
             text = buildAnnotatedString {
                 withStyle(style = SpanStyle(color = Grey)) {
-                    append("Already have an account? ")
+                    append(stringResource(R.string.already_have_account))
                 }
+                append(" ")
                 withStyle(
                     style = SpanStyle(
                         color = Blue,
                         fontWeight = FontWeight.Bold
                     )
                 ) {
-                    append("Log In")
+                    append(stringResource(R.string.log_in))
                 }
             },
             style = MaterialTheme.typography.subtitle1,
@@ -141,7 +144,7 @@ fun Form() {
     val emailState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
     val confirmPasswordState = remember { mutableStateOf("") }
-    val options = listOf("Male", "Female")
+    val options = listOf(stringResource(R.string.male), stringResource(R.string.female))
     val genderState = remember {
         mutableStateOf(options.first())
     }
@@ -157,29 +160,36 @@ fun Form() {
         EmailField(
             value = emailState.value,
             onValueChange = { emailState.value = it },
-            placeholder = "Enter your email",
-            title = "Email"
+            placeholder = stringResource(R.string.email_hint),
+            title = stringResource(R.string.email)
         )
         PasswordField(
             value = passwordState.value,
             onValueChange = { passwordState.value = it },
-            placeholder = "Enter your password",
-            title = "Password"
+            placeholder = stringResource(R.string.password_hint),
+            title = stringResource(R.string.password)
         )
         PasswordField(
             value = confirmPasswordState.value,
             onValueChange = { confirmPasswordState.value = it },
-            placeholder = "Enter your Confirm password",
-            title = "Confirm Password"
+            placeholder = stringResource(R.string.confirm_password_hint),
+            title = stringResource(R.string.confirm_password)
         )
-        RadioField(title = "Gender", options = options, selectedItem = genderState)
+        RadioField(
+            title = stringResource(R.string.gender),
+            options = options,
+            selectedItem = genderState
+        )
         DateField(
             onValueChange = { dateState.value = it },
             placeholder = "dd/mm/yyyy",
-            title = "Birth Date"
+            title = stringResource(R.string.birth_date)
         )
 
-        MButton(modifier = Modifier.widthIn(min = 200.dp), text = "Register", onClick = {})
+        MButton(
+            modifier = Modifier.widthIn(min = 200.dp),
+            text = stringResource(R.string.register),
+            onClick = {})
     }
 }
 
