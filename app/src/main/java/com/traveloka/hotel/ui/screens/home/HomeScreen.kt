@@ -1,4 +1,4 @@
-package com.traveloka.hotel.screens.home
+package com.traveloka.hotel.ui.screens.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

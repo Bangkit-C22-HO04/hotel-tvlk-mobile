@@ -1,15 +1,15 @@
-package com.traveloka.hotel.navigation
-
-import java.lang.IllegalArgumentException
+package com.traveloka.hotel.ui.navigation
 
 enum class HotelScreens {
     HomeScreen,
-    DetailsScreen;
+    DetailsScreen,
+    RegisterScreen;
+
     companion object {
-        fun fromRoute(route: String?): HotelScreens
-                = when (route?.substringBefore("/")) {
+        fun fromRoute(route: String?): HotelScreens = when (route?.substringBefore("/")) {
             HomeScreen.name -> HomeScreen
             DetailsScreen.name -> DetailsScreen
+            RegisterScreen.name -> RegisterScreen
             null -> HomeScreen
             else -> throw IllegalArgumentException("Route $route is not recognized")
         }

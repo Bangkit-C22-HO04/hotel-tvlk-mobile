@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">hotel-mobile</string>
+    <string name="back_to_intro">back to intro</string>
+    <string name="register">Register</string>
+    <string name="welcome">Welcome</string>
+    <string name="create_an_account">Create an account, It’s free</string>
+    <string name="already_have_account">Already have an account? </string>
+    <string name="log_in">Log In</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="email">Email</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="password">Password</string>
+    <string name="confirm_password_hint">Enter your Confirm password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="gender">Gender</string>
+    <string name="birth_date">Birth Date</string>
 </resources>
