@@ -1,4 +1,4 @@
-package com.traveloka.hotel.ui.screens.listHotel.component
+package com.traveloka.hotel.ui.screens.listHotel.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
