@@ -29,7 +29,7 @@ fun RegisterHeader(navController: NavController) {
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = { navController.navigate(HotelScreens.HomeScreen.name) }) {
+        IconButton(onClick = { navController.navigate(HotelScreens.IntroScreen.name) }) {
             Icon(
                 imageVector = Icons.Default.ArrowBack,
                 tint = Color.White,
