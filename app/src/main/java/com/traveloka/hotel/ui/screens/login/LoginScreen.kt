@@ -1,4 +1,4 @@
-package com.traveloka.hotel.ui.screens.register
+package com.traveloka.hotel.ui.screens.login
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,14 +11,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.traveloka.hotel.ui.screens.register.components.RegisterBody
-import com.traveloka.hotel.ui.screens.register.components.RegisterHeader
+import com.traveloka.hotel.ui.screens.login.components.LoginBody
+import com.traveloka.hotel.ui.screens.login.components.LoginHeader
 import com.traveloka.hotel.ui.theme.BlueBg
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 
-
 @Composable
-fun RegisterScreen(navController: NavController) {
+fun LoginScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .background(BlueBg)
@@ -26,7 +25,7 @@ fun RegisterScreen(navController: NavController) {
     ) {
         Column {
 
-            RegisterHeader(navController)
+            LoginHeader(navController)
             Spacer(modifier = Modifier.height(8.dp))
             Box(
                 modifier = Modifier
@@ -36,7 +35,7 @@ fun RegisterScreen(navController: NavController) {
                     .background(Color.White)
             ) {
 
-                RegisterBody(navController)
+                LoginBody(navController)
             }
         }
     }
@@ -45,8 +44,8 @@ fun RegisterScreen(navController: NavController) {
 
 @Preview(showSystemUi = true)
 @Composable
-fun Preview() {
+fun LoginScreenPreview() {
     HotelmobileTheme {
-        RegisterScreen(rememberNavController())
+        LoginScreen(rememberNavController())
     }
 }
