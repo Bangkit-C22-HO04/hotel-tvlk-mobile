@@ -14,8 +14,7 @@ class IntroActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnStart.setOnClickListener {
-//            TODO: Move to LoginActivity
-//            Intent(this, LoginActivity::class.java).also {
+//            Intent(this, LoginScreen::class.java).also {
 //                startActivity(it)
 //            }
         }
