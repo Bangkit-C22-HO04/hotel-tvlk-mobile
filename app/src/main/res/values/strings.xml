@@ -16,4 +16,18 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="gender">Gender</string>
     <string name="birth_date">Birth Date</string>
+    <string name="culture_sightseeing">Culture Sightseeing</string>
+    <string name="family_vacation">Family vacation</string>
+    <string name="holiday_or_leisure">Holiday/Leisure</string>
+    <string name="medical_travel">Medical Travel</string>
+    <string name="staycation">Staycation</string>
+    <string name="backpacking">Backpacking</string>
+    <string name="transit">Transit</string>
+    <string name="shopping_and_cullinary"><![CDATA[Shopping & Culinary]]></string>
+    <string name="business_trip">Business Trip</string>
+    <string name="romantic_vacation">Romantic Vacation</string>
+    <string name="add_location">Add Location</string>
+    <string name="find_your_destination">Find your destination</string>
+    <string name="search">Search</string>
+    <string name="travel_purpose">Travel purpose</string>
 </resources>

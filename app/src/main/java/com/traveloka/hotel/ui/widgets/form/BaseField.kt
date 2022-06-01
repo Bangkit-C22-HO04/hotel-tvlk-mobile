@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,14 +28,15 @@ fun BaseField(
     keyboardType: KeyboardType = KeyboardType.Text,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     trailingIcon: @Composable (() -> Unit)? = null,
-    readOnly: Boolean = false
-
+    readOnly: Boolean = false,
+    enabled: Boolean = true
 ) {
     Column {
 
         FormTitle(title)
         Spacer(modifier = Modifier.height(8.dp))
         TextField(
+            enabled = enabled,
             readOnly = readOnly,
             modifier = modifier
                 .fillMaxWidth()
@@ -47,8 +46,10 @@ fun BaseField(
             onValueChange = onValueChange,
             colors = TextFieldDefaults.textFieldColors(
                 focusedIndicatorColor = Color.Transparent,
+                disabledIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 backgroundColor = GreyLight,
+                disabledTextColor = LocalContentColor.current.copy(LocalContentAlpha.current),
                 placeholderColor = Grey
             ),
             shape = RoundedCornerShape(12.dp),
