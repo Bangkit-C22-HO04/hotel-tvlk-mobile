@@ -23,6 +23,7 @@ import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.BlueDark
 import com.traveloka.hotel.ui.theme.Orange
 import com.traveloka.hotel.utils.TRAVEL_PURPOSE_OPTIONS
+import com.traveloka.hotel.utils.WithLocation
 
 @Composable
 fun FilterBox() {
@@ -39,17 +40,20 @@ fun FilterBox() {
                 Box(modifier = Modifier.weight(1F)) {
                     DestinationField()
                 }
-                IconButton(
-                    modifier = Modifier
-                        .clip(CircleShape)
-                        .background(Blue),
-                    onClick = { /*TODO*/ }) {
-                    Icon(
-                        modifier = Modifier.size(28.dp),
-                        imageVector = Icons.Default.GpsFixed,
-                        contentDescription = "set current location",
-                        tint = Color.White
-                    )
+                WithLocation { getLocation ->
+
+                    IconButton(
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .background(Blue),
+                        onClick = { getLocation() }) {
+                        Icon(
+                            modifier = Modifier.size(28.dp),
+                            imageVector = Icons.Default.GpsFixed,
+                            contentDescription = "set current location",
+                            tint = Color.White
+                        )
+                    }
                 }
             }
             Row(
