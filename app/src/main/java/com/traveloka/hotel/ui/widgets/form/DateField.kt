@@ -40,13 +40,13 @@ fun DateField(
     )
 
     BaseField(
+        enabled = false,
         onClick = { datePickerDialog.show() },
         modifier = modifier,
         value = date.value,
         onValueChange = onValueChange,
         placeholder = placeholder,
         title = title,
-        readOnly = true,
         trailingIcon = {
             IconButton(onClick = { datePickerDialog.show() }) {
                 Icon(

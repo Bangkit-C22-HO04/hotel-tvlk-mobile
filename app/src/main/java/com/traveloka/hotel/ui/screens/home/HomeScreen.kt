@@ -10,9 +10,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.traveloka.hotel.ui.navigation.HotelScreens
+import com.traveloka.hotel.ui.widgets.button.MButton
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -24,16 +27,18 @@ fun HomeScreen() {
             }
         },
     ) {
-        MainContent()
+        MainContent(navController)
     }
 
 }
 
 @Composable
-fun MainContent() {
+fun MainContent(navController: NavController) {
     Column(modifier = Modifier.padding(12.dp)) {
         Text(text = "Hello HH!", style = MaterialTheme.typography.h4)
-
+        MButton(
+            text = "Lets Start",
+            onClick = { navController.navigate(HotelScreens.LoginScreen.name) })
     }
 
 }

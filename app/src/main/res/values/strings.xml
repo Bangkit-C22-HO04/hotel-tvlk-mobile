@@ -22,4 +22,22 @@
     <string name="intro_text">Let’s search cheap hotels in 3 easy steps here!</string>
     <string name="tagar_text">#MulaiAjaDuluTravelokaKemudian”</string>
     <string name="let_s_start">Let’s Start!</string>
+    <string name="culture_sightseeing">Culture Sightseeing</string>
+    <string name="family_vacation">Family vacation</string>
+    <string name="holiday_or_leisure">Holiday/Leisure</string>
+    <string name="medical_travel">Medical Travel</string>
+    <string name="staycation">Staycation</string>
+    <string name="backpacking">Backpacking</string>
+    <string name="transit">Transit</string>
+    <string name="shopping_and_cullinary"><![CDATA[Shopping & Culinary]]></string>
+    <string name="business_trip">Business Trip</string>
+    <string name="romantic_vacation">Romantic Vacation</string>
+    <string name="add_location">Add Location</string>
+    <string name="find_your_destination">Find your destination</string>
+    <string name="search">Search</string>
+    <string name="travel_purpose">Travel purpose</string>
+    <string name="sign_in">Sign in</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="lets_explore_the_world">Let\'s explore the world</string>
+    <string name="dont_have_account">Don’t have an account?</string>
 </resources>
