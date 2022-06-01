@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="Theme.Hotelmobile" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/purple_700</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/Blue</item>
+        <item name="colorPrimaryVariant">@color/BlueDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/Orange</item>
+        <item name="colorSecondaryVariant">@color/OrangeDark</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/BlueDark</item>
     </style>
 </resources>

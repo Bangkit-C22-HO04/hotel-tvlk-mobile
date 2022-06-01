@@ -16,4 +16,10 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="gender">Gender</string>
     <string name="birth_date">Birth Date</string>
+    <string name="title_activity_intro">IntroActivity</string>
+    <string name="traveloka_image">Traveloka image</string>
+    <string name="intro_image">Intro image</string>
+    <string name="intro_text">Let’s search cheap hotels in 3 easy steps here!</string>
+    <string name="tagar_text">#MulaiAjaDuluTravelokaKemudian”</string>
+    <string name="let_s_start">Let’s Start!</string>
 </resources>
