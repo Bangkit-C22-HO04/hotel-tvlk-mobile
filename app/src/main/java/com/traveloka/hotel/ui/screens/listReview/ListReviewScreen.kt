@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -20,22 +22,26 @@ import com.traveloka.hotel.ui.theme.HotelmobileTheme
 fun ListReviewScreen(navController: NavController) {
     Column(
         modifier = Modifier
-            .padding(8.dp)
+            .padding(horizontal = 8.dp, vertical = 32.dp)
             .fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(32.dp)
+        verticalArrangement = Arrangement.spacedBy(32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = "8.6",
                 style = MaterialTheme.typography.h4,
-                color = BlueDark
+                color = BlueDark,
+                textAlign = TextAlign.Center
             )
             Text(
                 text = "Impressive",
                 style = MaterialTheme.typography.subtitle1,
-                color = BlueDark
+                color = BlueDark,
+                textAlign = TextAlign.Center
             )
         }
         ReviewList()

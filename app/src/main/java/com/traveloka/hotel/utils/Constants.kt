@@ -49,7 +49,7 @@ fun getReviews(): List<Review> {
     val reviewsJson = JSONArray(reviewJsonArray)
     val formatter = SimpleDateFormat("dd-MM-yyyy")
 
-    for (i in 0 until reviewsJson.length()) {
+    for (i in 0 until reviewsJson.length()-1) {
 
         val review = reviewsJson.getJSONObject(i)
         val reviewModel = Review(

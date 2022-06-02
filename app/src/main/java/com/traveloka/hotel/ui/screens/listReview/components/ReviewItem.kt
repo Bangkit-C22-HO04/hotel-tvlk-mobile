@@ -10,9 +10,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -22,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.traveloka.hotel.model.Review
 import com.traveloka.hotel.ui.theme.*
+import java.text.SimpleDateFormat
 
 @Composable
 fun ReviewItem(review: Review) {
@@ -32,11 +35,12 @@ fun ReviewItem(review: Review) {
         Column(
             modifier = Modifier
                 .height(160.dp)
-                .padding(8.dp),
+                .padding(20.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
                     imageVector = Icons.Default.AccountCircle,
@@ -48,21 +52,27 @@ fun ReviewItem(review: Review) {
                 )
             }
             Row(
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+
+                    ) {
                     Icon(
                         imageVector = Icons.Default.Star,
                         contentDescription = "",
-                        tint = YellowStar
+                        tint = YellowStar,
+                        modifier = Modifier
+                            .height(20.dp),
                     )
                     Text(
                         buildAnnotatedString {
                             withStyle(
                                 style = SpanStyle(
-                                    fontWeight = FontWeight.Normal,
+                                    fontWeight = FontWeight.Bold,
                                     fontSize = 12.sp,
                                     letterSpacing = 0.4.sp,
                                     color = YellowStar
@@ -84,21 +94,20 @@ fun ReviewItem(review: Review) {
                     )
                 }
                 Text(
-                    text = review.date.toString(),
+                    text = SimpleDateFormat("dd MMMM yyyy").format(review.date),
                     style = MaterialTheme.typography.caption,
                     color = GreyLine
                 )
             }
             Text(
                 modifier = Modifier
-                    .padding(16.dp)
                     .drawBehind {
                         drawRoundRect(
                             color = LightBlue,
                             cornerRadius = CornerRadius(
-                                x = 4.dp.toPx(),
-                                y = 4.dp.toPx()
-                            )
+                                x = 8.dp.toPx(),
+                                y = 8.dp.toPx()
+                            ),
                         )
                     },
                 text = review.tag,
