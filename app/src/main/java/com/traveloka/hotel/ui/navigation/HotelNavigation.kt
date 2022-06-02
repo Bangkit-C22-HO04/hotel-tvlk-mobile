@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.ui.screens.home.HomeScreen
 import com.traveloka.hotel.ui.screens.listHotel.ListHotelScreen
+import com.traveloka.hotel.ui.screens.listReview.ListReviewScreen
 import com.traveloka.hotel.ui.screens.login.LoginScreen
 import com.traveloka.hotel.ui.screens.register.RegisterScreen
 
@@ -26,8 +27,9 @@ fun HotelNavigation() {
         composable(HotelScreens.ListHotelScreen.name) {
             ListHotelScreen(navController)
         }
-
-
+        composable(HotelScreens.ListReviewScreen.name) {
+            ListReviewScreen(navController)
+        }
     }
 
 }

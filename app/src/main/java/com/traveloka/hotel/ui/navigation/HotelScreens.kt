@@ -4,6 +4,7 @@ enum class HotelScreens {
     HomeScreen,
     DetailsScreen,
     ListHotelScreen,
+    ListReviewScreen,
     LoginScreen,
     RegisterScreen;
 
@@ -13,6 +14,7 @@ enum class HotelScreens {
             DetailsScreen.name -> DetailsScreen
             RegisterScreen.name -> RegisterScreen
             ListHotelScreen.name -> ListHotelScreen
+            ListReviewScreen.name -> ListReviewScreen
             LoginScreen.name -> LoginScreen
             null -> HomeScreen
             else -> throw IllegalArgumentException("Route $route is not recognized")

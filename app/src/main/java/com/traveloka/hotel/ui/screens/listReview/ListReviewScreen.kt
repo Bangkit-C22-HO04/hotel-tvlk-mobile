@@ -1,0 +1,51 @@
+package com.traveloka.hotel.ui.screens.listReview
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.traveloka.hotel.ui.screens.listReview.components.ReviewList
+import com.traveloka.hotel.ui.theme.BlueDark
+import com.traveloka.hotel.ui.theme.HotelmobileTheme
+
+@Composable
+fun ListReviewScreen(navController: NavController) {
+    Column(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(32.dp)
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Text(
+                text = "8.6",
+                style = MaterialTheme.typography.h4,
+                color = BlueDark
+            )
+            Text(
+                text = "Impressive",
+                style = MaterialTheme.typography.subtitle1,
+                color = BlueDark
+            )
+        }
+        ReviewList()
+    }
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun ListReviewScreenPreview() {
+    HotelmobileTheme {
+        ListReviewScreen(rememberNavController())
+    }
+}
