@@ -1,5 +1,9 @@
 package com.traveloka.hotel.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Hotel(
     val id: String,
     val imgUrl: String,
@@ -9,4 +13,4 @@ data class Hotel(
     val type: String,
     val rating: Double,
     val reviews: Long
-)
+): Parcelable
