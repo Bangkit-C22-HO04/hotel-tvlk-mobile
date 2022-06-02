@@ -46,7 +46,7 @@ fun LoginBody(navController: NavController) {
         )
         Spacer(modifier = Modifier.height(25.dp))
 
-        LoginForm()
+        LoginForm(navController)
 
         Text(
             text = buildAnnotatedString {

@@ -16,8 +16,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
+import com.traveloka.hotel.ui.navigation.HotelScreens
 import com.traveloka.hotel.ui.screens.login.LoginScreen
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 import com.traveloka.hotel.ui.widgets.button.MButton
@@ -26,7 +28,7 @@ import com.traveloka.hotel.ui.widgets.form.PasswordField
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun LoginForm() {
+fun LoginForm(navController: NavController) {
     val emailState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
 
@@ -60,7 +62,7 @@ fun LoginForm() {
         MButton(
             modifier = Modifier.widthIn(min = 200.dp),
             text = stringResource(R.string.log_in),
-            onClick = {})
+            onClick = { navController.navigate(HotelScreens.ListHotelScreen.name) })
     }
 }
 
