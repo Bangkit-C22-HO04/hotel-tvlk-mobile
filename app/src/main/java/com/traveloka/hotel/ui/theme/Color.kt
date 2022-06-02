@@ -2,6 +2,7 @@ package com.traveloka.hotel.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val LightBlue = Color(0xFFCDEDFF)
 val Blue = Color(0xFF0194F3)
 val BlueBg = Color(0xFF0194F3)
 val BlueDark = Color(0xFF0770CD)
