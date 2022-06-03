@@ -47,7 +47,7 @@ fun ListHotelScreen(navController: NavController) {
                 )
             }
             FilterBox()
-            HotelList()
+            HotelList(navController)
         }
     }
 }

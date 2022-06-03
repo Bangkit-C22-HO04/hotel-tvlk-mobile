@@ -50,4 +50,9 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp
     ),
+    caption = TextStyle(
+        fontFamily = MuseoSans,
+        fontWeight = FontWeight.Normal,
+        fontSize = 11.sp
+    ),
 )
