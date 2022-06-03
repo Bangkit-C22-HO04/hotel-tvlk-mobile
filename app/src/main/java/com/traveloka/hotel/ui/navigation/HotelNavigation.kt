@@ -1,10 +1,11 @@
 package com.traveloka.hotel.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.traveloka.hotel.model.Hotel
+import androidx.navigation.navArgument
 import com.traveloka.hotel.ui.screens.detailHotel.DetailHotelScreen
 import com.traveloka.hotel.ui.screens.introduction.IntroScreen
 import com.traveloka.hotel.ui.screens.listHotel.ListHotelScreen
@@ -28,7 +29,10 @@ fun HotelNavigation() {
         composable(HotelScreens.ListHotelScreen.name) {
             ListHotelScreen(navController)
         }
-        composable(HotelScreens.DetailsScreen.name+"/{hotelId}", arguments = listOf(navArgument("hotelId") { type = NavType.StringType })){ backStackEntry ->
+        composable(
+            HotelScreens.DetailsScreen.name + "/{hotelId}",
+            arguments = listOf(navArgument("hotelId") { type = NavType.StringType })
+        ) { backStackEntry ->
             DetailHotelScreen(navController, backStackEntry.arguments?.getString("hotelId"))
         }
 

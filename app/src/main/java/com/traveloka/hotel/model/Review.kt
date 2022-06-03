@@ -1,7 +1,5 @@
 package com.traveloka.hotel.model
 
-import java.util.*
-
 data class Review(
     val id: String,
     val name: String,

@@ -38,7 +38,6 @@ fun HotelItem(hotel: Hotel,navController: NavController) {
     Card(modifier = Modifier
         .fillMaxWidth()
         .clickable {
-            navController.currentBackStackEntry?.savedStateHandle?.set("hotel",hotel)
             navController.navigate(HotelScreens.DetailsScreen.name+"/${hotel.id}")
         }
     ) {
