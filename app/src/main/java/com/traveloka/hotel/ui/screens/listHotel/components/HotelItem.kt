@@ -39,7 +39,7 @@ fun HotelItem(hotel: Hotel,navController: NavController) {
         .fillMaxWidth()
         .clickable {
             navController.currentBackStackEntry?.savedStateHandle?.set("hotel",hotel)
-            navController.navigate(HotelScreens.DetailsScreen.name)
+            navController.navigate(HotelScreens.DetailsScreen.name+"/${hotel.id}")
         }
     ) {
         Row {
