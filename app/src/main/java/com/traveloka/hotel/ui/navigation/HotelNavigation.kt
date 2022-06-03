@@ -32,7 +32,7 @@ fun HotelNavigation() {
             val hotel=navController.previousBackStackEntry?.savedStateHandle?.get<Hotel>("hotel")
 
             hotel?.let {
-                DetailHotelScreen(hotel)
+                DetailHotelScreen(navController, hotel)
             }
         }
 

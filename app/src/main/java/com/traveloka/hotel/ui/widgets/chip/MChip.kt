@@ -1,6 +1,6 @@
 package com.traveloka.hotel.ui.widgets.chip
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -9,25 +9,22 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.traveloka.hotel.ui.theme.HotelmobileTheme
-import com.traveloka.hotel.ui.theme.Orange
-import com.traveloka.hotel.ui.theme.OrangeChip
-import com.traveloka.hotel.ui.widgets.button.MButton
+import com.traveloka.hotel.ui.theme.*
 
 @Composable
-fun MChip(type: String) {
+fun MChip(text: String, shapeColor: Color, textColor: Color, modifier: Modifier, style: TextStyle) {
     Surface(
-        modifier = Modifier.padding(end = 8.dp),
         shape = RoundedCornerShape(16.dp),
-        color = OrangeChip
+        color = shapeColor
     ) {
         Text(
-            text = type,
-            style = MaterialTheme.typography.body2,
-            color = Orange,
-            modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
+            text = text,
+            style = style,
+            color = textColor,
+            modifier = modifier
         )
     }
 }
@@ -36,8 +33,21 @@ fun MChip(type: String) {
 @Composable
 fun PreviewMButton() {
     HotelmobileTheme {
-        Box {
-            MChip(type = "Hotels")
+        Row {
+            MChip(
+                "Hotels",
+                OrangeChip,
+                Orange,
+                Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
+                MaterialTheme.typography.body2
+            )
+            MChip(
+                "Family vacation",
+                BlueChip,
+                Blue,
+                Modifier.padding(vertical = 3.dp, horizontal = 4.dp),
+                MaterialTheme.typography.caption
+            )
         }
     }
 }

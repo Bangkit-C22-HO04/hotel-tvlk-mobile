@@ -18,10 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.traveloka.hotel.model.Hotel
-import com.traveloka.hotel.ui.theme.Grey
-import com.traveloka.hotel.ui.theme.GreyLine
-import com.traveloka.hotel.ui.theme.HotelmobileTheme
-import com.traveloka.hotel.ui.theme.YellowStar
+import com.traveloka.hotel.ui.theme.*
 import com.traveloka.hotel.ui.widgets.chip.MChip
 import com.traveloka.hotel.utils.getHotels
 
@@ -34,7 +31,13 @@ fun Content(hotel: Hotel) {
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(text = hotel.name, style = MaterialTheme.typography.h6)
-        MChip(type = hotel.type)
+        MChip(
+            hotel.type,
+            OrangeChip,
+            Orange,
+            Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
+            MaterialTheme.typography.body2
+        )
         Row(
             modifier = Modifier
                 .padding(top = 8.dp)
