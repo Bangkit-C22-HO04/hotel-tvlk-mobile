@@ -22,20 +22,24 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.traveloka.hotel.R
 import com.traveloka.hotel.model.Hotel
+import com.traveloka.hotel.ui.navigation.HotelScreens
 import com.traveloka.hotel.ui.theme.Grey
 import com.traveloka.hotel.ui.theme.GreyLine
 import com.traveloka.hotel.ui.theme.Orange
 import com.traveloka.hotel.ui.theme.YellowStar
 
 @Composable
-fun HotelItem(hotel: Hotel) {
+fun HotelItem(hotel: Hotel,navController: NavController) {
     Card(modifier = Modifier
         .fillMaxWidth()
-        .clickable { }
+        .clickable {
+            navController.navigate(HotelScreens.DetailsScreen.name+"/${hotel.id}")
+        }
     ) {
         Row {
             AsyncImage(
