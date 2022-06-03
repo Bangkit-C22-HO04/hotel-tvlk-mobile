@@ -28,12 +28,8 @@ fun HotelNavigation() {
         composable(HotelScreens.ListHotelScreen.name) {
             ListHotelScreen(navController)
         }
-        composable(HotelScreens.DetailsScreen.name){
-            val hotel=navController.previousBackStackEntry?.savedStateHandle?.get<Hotel>("hotel")
-
-            hotel?.let {
-                DetailHotelScreen(navController, hotel)
-            }
+        composable(HotelScreens.DetailsScreen.name+"/{hotelId}", arguments = listOf(navArgument("hotelId") { type = NavType.StringType })){ backStackEntry ->
+            DetailHotelScreen(navController, backStackEntry.arguments?.getString("hotelId"))
         }
 
 
