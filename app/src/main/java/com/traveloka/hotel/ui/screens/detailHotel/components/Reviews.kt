@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.traveloka.hotel.ui.theme.*
 import com.traveloka.hotel.ui.widgets.chip.MChip
 import com.traveloka.hotel.utils.getReviews
+import java.text.SimpleDateFormat
 
 @Composable
 fun Reviews() {
@@ -88,7 +89,7 @@ fun Reviews() {
                         )
                     }
                     Text(
-                        text = reviews.date,
+                        text = SimpleDateFormat("dd MMMM yyyy").format(reviews.date),
                         style = MaterialTheme.typography.subtitle2,
                         color = GreyLine
                     )
@@ -100,7 +101,10 @@ fun Reviews() {
                     Modifier.padding(vertical = 3.dp, horizontal = 4.dp),
                     MaterialTheme.typography.caption
                 )
-                Text(text = reviews.content, style = MaterialTheme.typography.body2)
+                Text(
+                    text = reviews.content,
+                    style = MaterialTheme.typography.body2
+                )
             }
         }
     }

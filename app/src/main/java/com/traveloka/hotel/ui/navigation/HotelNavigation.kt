@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import com.traveloka.hotel.ui.screens.detailHotel.DetailHotelScreen
 import com.traveloka.hotel.ui.screens.introduction.IntroScreen
 import com.traveloka.hotel.ui.screens.listHotel.ListHotelScreen
+import com.traveloka.hotel.ui.screens.listReview.ListReviewScreen
 import com.traveloka.hotel.ui.screens.login.LoginScreen
 import com.traveloka.hotel.ui.screens.register.RegisterScreen
 
@@ -28,6 +29,9 @@ fun HotelNavigation() {
         }
         composable(HotelScreens.ListHotelScreen.name) {
             ListHotelScreen(navController)
+        }
+        composable(HotelScreens.ListReviewScreen.name) {
+            ListReviewScreen(navController)
         }
         composable(
             HotelScreens.DetailsScreen.name + "/{hotelId}",

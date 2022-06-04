@@ -47,15 +47,16 @@ fun getReviews(): List<Review> {
 
     val reviews = mutableListOf<Review>()
     val reviewsJson = JSONArray(reviewJsonArray)
+    val formatter = SimpleDateFormat("dd-MM-yyyy")
 
-    for (i in 0 until reviewsJson.length() - 1) {
+    for (i in 0 until reviewsJson.length()-1) {
 
         val review = reviewsJson.getJSONObject(i)
         val reviewModel = Review(
             id = review["id"].toString(),
             name = review["name"].toString(),
             rating = review["rating"].toString().toDouble(),
-            date = review["date"].toString().dateFormat(),
+            date = formatter.parse(review["date"].toString()),
             tag = review["tag"].toString(),
             content = review["content"].toString()
         )
