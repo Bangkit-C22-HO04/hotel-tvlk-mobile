@@ -1,13 +1,16 @@
-package com.traveloka.hotel.presentation.navigation
+package com.traveloka.hotel.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.traveloka.hotel.presentation.screens.introduction.IntroScreen
-import com.traveloka.hotel.presentation.screens.listHotel.ListHotelScreen
-import com.traveloka.hotel.presentation.screens.login.LoginScreen
-import com.traveloka.hotel.presentation.screens.register.RegisterScreen
+import androidx.navigation.navArgument
+import com.traveloka.hotel.ui.screens.detailHotel.DetailHotelScreen
+import com.traveloka.hotel.ui.screens.introduction.IntroScreen
+import com.traveloka.hotel.ui.screens.listHotel.ListHotelScreen
+import com.traveloka.hotel.ui.screens.listReview.ListReviewScreen
+import com.traveloka.hotel.ui.screens.login.LoginScreen
+import com.traveloka.hotel.ui.screens.register.RegisterScreen
 
 @Composable
 fun HotelNavigation() {
@@ -25,6 +28,15 @@ fun HotelNavigation() {
         }
         composable(HotelScreens.ListHotelScreen.name) {
             ListHotelScreen(navController)
+        }
+        composable(HotelScreens.ListReviewScreen.name) {
+            ListReviewScreen(navController)
+        }
+        composable(
+            HotelScreens.DetailsScreen.name + "/{hotelId}",
+            arguments = listOf(navArgument("hotelId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            DetailHotelScreen(navController, backStackEntry.arguments?.getString("hotelId"))
         }
 
 

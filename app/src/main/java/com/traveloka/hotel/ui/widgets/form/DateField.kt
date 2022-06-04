@@ -32,9 +32,9 @@ fun DateField(
     val datePickerDialog = DatePickerDialog(
         context,
         { _: DatePicker, getYear: Int, getMonth: Int, getDayOfMonth: Int ->
-            date.value = "$getDayOfMonth/$getMonth/$getYear"
+            date.value = "$getDayOfMonth/${getMonth + 1}/$getYear"
             year.value = getYear
-            month.value = getMonth
+            month.value = getMonth + 1
             day.value = getDayOfMonth
         }, year.value, month.value, day.value
     )

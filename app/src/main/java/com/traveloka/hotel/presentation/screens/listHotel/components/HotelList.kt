@@ -15,13 +15,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.presentation.screens.listHotel.ListHotelScreen
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 import com.traveloka.hotel.utils.getHotels
 
 @Composable
-fun HotelList() {
+fun HotelList(navController: NavController) {
     val hotels = getHotels()
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Row(
@@ -39,7 +40,7 @@ fun HotelList() {
 
         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             items(hotels, key = { it.id }) { hotel ->
-                HotelItem(hotel = hotel)
+                HotelItem(hotel = hotel, navController = navController)
             }
         }
     }
