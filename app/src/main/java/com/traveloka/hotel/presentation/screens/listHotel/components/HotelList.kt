@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.presentation.screens.listHotel.ListHotelScreen
+import com.traveloka.hotel.ui.screens.listHotel.components.HotelItem
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 import com.traveloka.hotel.utils.getHotels
 

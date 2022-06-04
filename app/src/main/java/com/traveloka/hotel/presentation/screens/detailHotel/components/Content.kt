@@ -1,4 +1,4 @@
-package com.traveloka.hotel.ui.screens.detailHotel.components
+package com.traveloka.hotel.presentation.screens.detailHotel.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
@@ -17,7 +17,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.traveloka.hotel.model.Hotel
+import com.traveloka.hotel.domain.model.Hotel
 import com.traveloka.hotel.ui.theme.*
 import com.traveloka.hotel.ui.widgets.chip.MChip
 import com.traveloka.hotel.utils.getHotels

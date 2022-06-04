@@ -1,16 +1,18 @@
 package com.traveloka.hotel.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.traveloka.hotel.ui.screens.detailHotel.DetailHotelScreen
-import com.traveloka.hotel.ui.screens.introduction.IntroScreen
-import com.traveloka.hotel.ui.screens.listHotel.ListHotelScreen
-import com.traveloka.hotel.ui.screens.listReview.ListReviewScreen
-import com.traveloka.hotel.ui.screens.login.LoginScreen
-import com.traveloka.hotel.ui.screens.register.RegisterScreen
+import com.traveloka.hotel.presentation.navigation.HotelScreens
+import com.traveloka.hotel.presentation.screens.detailHotel.DetailHotelScreen
+import com.traveloka.hotel.presentation.screens.introduction.IntroScreen
+import com.traveloka.hotel.presentation.screens.listHotel.ListHotelScreen
+import com.traveloka.hotel.presentation.screens.listReview.ListReviewScreen
+import com.traveloka.hotel.presentation.screens.login.LoginScreen
+import com.traveloka.hotel.presentation.screens.register.RegisterScreen
 
 @Composable
 fun HotelNavigation() {

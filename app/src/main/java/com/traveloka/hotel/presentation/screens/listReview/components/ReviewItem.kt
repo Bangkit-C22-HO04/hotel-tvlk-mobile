@@ -1,4 +1,4 @@
-package com.traveloka.hotel.ui.screens.listReview.components
+package com.traveloka.hotel.presentation.screens.listReview.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -22,8 +21,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.traveloka.hotel.model.Review
-import com.traveloka.hotel.ui.theme.*
+import com.traveloka.hotel.domain.model.Review
+import com.traveloka.hotel.ui.theme.Blue
+import com.traveloka.hotel.ui.theme.GreyLine
+import com.traveloka.hotel.ui.theme.LightBlue
+import com.traveloka.hotel.ui.theme.YellowStar
 import java.text.SimpleDateFormat
 
 @Composable

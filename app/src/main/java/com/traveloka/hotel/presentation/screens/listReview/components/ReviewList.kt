@@ -1,4 +1,4 @@
-package com.traveloka.hotel.ui.screens.listReview.components
+package com.traveloka.hotel.presentation.screens.listReview.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.traveloka.hotel.ui.screens.listReview.ListReviewScreen
+import com.traveloka.hotel.presentation.screens.listReview.ListReviewScreen
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 import com.traveloka.hotel.utils.getReviews
 

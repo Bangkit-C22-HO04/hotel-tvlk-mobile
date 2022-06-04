@@ -26,8 +26,8 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.traveloka.hotel.R
-import com.traveloka.hotel.ui.navigation.HotelScreens
 import com.traveloka.hotel.domain.model.Hotel
+import com.traveloka.hotel.presentation.navigation.HotelScreens
 import com.traveloka.hotel.ui.theme.Grey
 import com.traveloka.hotel.ui.theme.GreyLine
 import com.traveloka.hotel.ui.theme.Orange
@@ -38,7 +38,7 @@ fun HotelItem(hotel: Hotel,navController: NavController) {
     Card(modifier = Modifier
         .fillMaxWidth()
         .clickable {
-            navController.navigate(HotelScreens.DetailsScreen.name+"/${hotel.id}")
+            navController.navigate(HotelScreens.DetailsScreen.name + "/${hotel.id}")
         }
     ) {
         Row {

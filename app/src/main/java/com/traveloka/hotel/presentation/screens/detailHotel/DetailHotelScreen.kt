@@ -1,4 +1,4 @@
-package com.traveloka.hotel.ui.screens.detailHotel
+package com.traveloka.hotel.presentation.screens.detailHotel
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -22,9 +22,9 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.traveloka.hotel.R
-import com.traveloka.hotel.ui.navigation.HotelScreens
-import com.traveloka.hotel.ui.screens.detailHotel.components.Content
-import com.traveloka.hotel.ui.screens.detailHotel.components.Reviews
+import com.traveloka.hotel.presentation.navigation.HotelScreens
+import com.traveloka.hotel.presentation.screens.detailHotel.components.Content
+import com.traveloka.hotel.presentation.screens.detailHotel.components.Reviews
 import com.traveloka.hotel.ui.theme.GreyLight
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 import com.traveloka.hotel.utils.getHotels

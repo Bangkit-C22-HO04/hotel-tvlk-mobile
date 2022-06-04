@@ -1,4 +1,4 @@
-package com.traveloka.hotel.ui.screens.detailHotel.components
+package com.traveloka.hotel.presentation.screens.detailHotel.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
