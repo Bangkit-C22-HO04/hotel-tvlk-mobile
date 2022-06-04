@@ -2,7 +2,7 @@ package com.traveloka.hotel.di
 
 import android.content.Context
 import com.traveloka.hotel.data.local.UserPreference
-import com.traveloka.hotel.repository.MainRepository
+import com.traveloka.hotel.data.repository.MainRepository
 
 object Injection {
     fun provideMainRepository(context: Context): MainRepository {

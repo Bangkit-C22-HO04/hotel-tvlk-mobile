@@ -1,7 +1,7 @@
 package com.traveloka.hotel.utils
 
 import com.traveloka.hotel.R
-import com.traveloka.hotel.model.Hotel
+import com.traveloka.hotel.domain.model.Hotel
 import org.json.JSONArray
 
 val TRAVEL_PURPOSE_OPTIONS = listOf(
