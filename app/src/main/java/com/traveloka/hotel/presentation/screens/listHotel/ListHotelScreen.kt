@@ -17,37 +17,40 @@ import com.traveloka.hotel.presentation.screens.listHotel.components.FilterBox
 import com.traveloka.hotel.presentation.screens.listHotel.components.HotelList
 import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
+import com.traveloka.hotel.utils.WrapperFunc.WithAuth
 
 @Composable
 fun ListHotelScreen(navController: NavController) {
-    Box {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(106.dp)
-                .background(Blue)
-        )
-        Column(
-            modifier = Modifier
-                .padding(8.dp)
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
+    WithAuth(navController = navController) {
+        Box {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(36.dp),
-                contentAlignment = Alignment.Center
+                    .height(106.dp)
+                    .background(Blue)
+            )
+            Column(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.logo_white),
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier.fillMaxSize(),
-                    contentDescription = "logo"
-                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(36.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.logo_white),
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.fillMaxSize(),
+                        contentDescription = "logo"
+                    )
+                }
+                FilterBox()
+                HotelList(navController)
             }
-            FilterBox()
-            HotelList(navController)
         }
     }
 }

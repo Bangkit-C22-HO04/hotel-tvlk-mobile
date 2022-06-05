@@ -3,10 +3,7 @@ package com.traveloka.hotel.ui.widgets.button
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,10 +18,13 @@ fun MButton(
     text: String,
     bgColor: Color = Blue,
     textColor: Color = Color.White,
+    enabled: Boolean = true,
+    isLoading: Boolean = false,
     onClick: () -> Unit = {}
 ) {
     Button(
         modifier = modifier,
+        enabled = enabled,
         colors = ButtonDefaults.buttonColors(
             backgroundColor = bgColor,
             contentColor = textColor
@@ -33,7 +33,11 @@ fun MButton(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
         onClick = onClick
     ) {
-        Text(text = text, style = MaterialTheme.typography.h6)
+        if (isLoading) {
+            CircularProgressIndicator()
+        } else {
+            Text(text = text, style = MaterialTheme.typography.h6)
+        }
     }
 
 }

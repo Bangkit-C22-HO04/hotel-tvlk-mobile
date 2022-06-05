@@ -6,6 +6,8 @@ import com.google.android.gms.maps.model.LatLng
 interface IUserPreference {
     fun setLocation(value: LatLng)
     fun getLocation(): LatLng
+    fun saveAuthToken(token: String)
+    fun fetchAuthToken(): String?
 }
 
 class UserPreference {
@@ -13,9 +15,9 @@ class UserPreference {
     class UserPreference(context: Context): IUserPreference {
         companion object {
             private const val PREFS_NAME = "user_pref"
-            private const val LOCATION = "location"
             private const val LATITUDE = "latitude"
             private const val LONGITUDE = "longitude"
+            const val USER_TOKEN = "user_token"
         }
 
         private val preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -33,6 +35,16 @@ class UserPreference {
 
             return LatLng(latitude?.toDouble() ?: 0.0, longitude?.toDouble() ?: 0.0)
 
+        }
+
+        override fun saveAuthToken(token: String) {
+            val editor = preferences.edit()
+            editor.putString(USER_TOKEN, token)
+            editor.apply()
+        }
+
+        override fun fetchAuthToken(): String? {
+            return preferences.getString(USER_TOKEN, null)
         }
 
 

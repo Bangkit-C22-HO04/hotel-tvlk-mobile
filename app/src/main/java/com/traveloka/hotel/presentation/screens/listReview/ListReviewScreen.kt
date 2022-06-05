@@ -17,34 +17,39 @@ import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.presentation.screens.listReview.components.ReviewList
 import com.traveloka.hotel.ui.theme.BlueDark
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
+import com.traveloka.hotel.utils.WrapperFunc.WithAuth
 
 @Composable
 fun ListReviewScreen(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .padding(horizontal = 8.dp, vertical = 32.dp)
-            .fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+
+    WithAuth(navController = navController) {
+
         Column(
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier
+                .padding(horizontal = 8.dp, vertical = 32.dp)
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(32.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = "8.6",
-                style = MaterialTheme.typography.h4,
-                color = BlueDark,
-                textAlign = TextAlign.Center
-            )
-            Text(
-                text = "Impressive",
-                style = MaterialTheme.typography.subtitle1,
-                color = BlueDark,
-                textAlign = TextAlign.Center
-            )
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "8.6",
+                    style = MaterialTheme.typography.h4,
+                    color = BlueDark,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    text = "Impressive",
+                    style = MaterialTheme.typography.subtitle1,
+                    color = BlueDark,
+                    textAlign = TextAlign.Center
+                )
+            }
+            ReviewList()
         }
-        ReviewList()
     }
 }
 

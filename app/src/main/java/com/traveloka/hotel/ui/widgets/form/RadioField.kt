@@ -11,7 +11,6 @@ import androidx.compose.material.RadioButton
 import androidx.compose.material.RadioButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -20,16 +19,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.traveloka.hotel.ui.theme.Blue
 
 @Composable
-fun RadioField(title: String, options: List<String>, selectedItem: MutableState<String>) {
+fun RadioField(
+    title: String,
+    options: List<String>,
+    selectedItem: String,
+    onValueChange: (String) -> Unit
+) {
 
     Column(modifier = Modifier.fillMaxWidth()) {
         FormTitle(title)
-        RadioGroup(options, selectedItem)
+        RadioGroup(options, selectedItem, onValueChange)
     }
 }
 
 @Composable
-fun RadioGroup(options: List<String>, selected: MutableState<String>) {
+fun RadioGroup(
+    options: List<String>, selected: String, onValueChange: (String) -> Unit
+) {
     val interactionSource = remember {
         MutableInteractionSource()
     }
@@ -41,11 +47,11 @@ fun RadioGroup(options: List<String>, selected: MutableState<String>) {
                 modifier = Modifier.clickable(
                     interactionSource = interactionSource,
                     indication = null
-                ) { selected.value = it }
+                ) { onValueChange(it) }
             ) {
                 RadioButton(
-                    selected = it == selected.value,
-                    onClick = { selected.value = it },
+                    selected = it == selected,
+                    onClick = { onValueChange(it) },
                     colors = RadioButtonDefaults.colors(
                         selectedColor = Blue
                     )
@@ -63,5 +69,5 @@ fun PreviewRadioButton() {
     val selectedItem = remember {
         mutableStateOf(options.first())
     }
-    RadioField("title", options, selectedItem)
+    RadioField("title", options, selectedItem.value) { }
 }
