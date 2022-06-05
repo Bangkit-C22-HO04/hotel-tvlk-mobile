@@ -1,8 +1,8 @@
 package com.traveloka.hotel.utils
 
 import com.traveloka.hotel.R
-import com.traveloka.hotel.model.Hotel
-import com.traveloka.hotel.model.Review
+import com.traveloka.hotel.domain.model.Hotel
+import com.traveloka.hotel.domain.model.Review
 import org.json.JSONArray
 import java.text.SimpleDateFormat
 
