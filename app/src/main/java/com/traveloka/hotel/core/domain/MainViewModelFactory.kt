@@ -1,9 +1,9 @@
-package com.traveloka.hotel.common.domain
+package com.traveloka.hotel.core.domain
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.traveloka.hotel.common.data.MainRepository
+import com.traveloka.hotel.core.data.MainRepository
 import com.traveloka.hotel.di.Injection
 
 class MainViewModelFactory private constructor(private val registerRepository: MainRepository) :

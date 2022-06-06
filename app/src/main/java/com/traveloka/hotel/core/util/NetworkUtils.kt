@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.util
+package com.traveloka.hotel.core.util
 
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody

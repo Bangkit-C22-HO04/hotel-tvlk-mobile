@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.network
+package com.traveloka.hotel.core.network
 
 import android.content.Context
 import com.traveloka.hotel.BuildConfig

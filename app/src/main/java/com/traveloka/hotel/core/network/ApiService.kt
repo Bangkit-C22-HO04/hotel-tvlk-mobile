@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.network
+package com.traveloka.hotel.core.network
 
 import com.traveloka.hotel.featureAuth.data.model.login.LoginResponse
 import com.traveloka.hotel.featureAuth.data.model.register.RegisterResponse

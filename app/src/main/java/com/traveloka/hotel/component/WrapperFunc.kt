@@ -5,9 +5,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.traveloka.hotel.common.domain.MainViewModel
-import com.traveloka.hotel.common.domain.MainViewModelFactory
-import com.traveloka.hotel.common.presentation.navigation.HotelScreens
+import com.traveloka.hotel.core.domain.MainViewModel
+import com.traveloka.hotel.core.domain.MainViewModelFactory
+import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 
 object WrapperFunc {
 

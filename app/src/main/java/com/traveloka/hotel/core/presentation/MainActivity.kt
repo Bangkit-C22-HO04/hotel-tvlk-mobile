@@ -1,9 +1,9 @@
-package com.traveloka.hotel.common.presentation
+package com.traveloka.hotel.core.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.traveloka.hotel.common.presentation.navigation.HotelNavigation
+import com.traveloka.hotel.core.presentation.navigation.HotelNavigation
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 
 class MainActivity : ComponentActivity() {

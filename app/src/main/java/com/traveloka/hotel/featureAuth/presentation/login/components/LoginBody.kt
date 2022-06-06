@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
-import com.traveloka.hotel.common.presentation.navigation.HotelScreens
+import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 import com.traveloka.hotel.featureAuth.presentation.login.LoginScreen
 import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.Grey

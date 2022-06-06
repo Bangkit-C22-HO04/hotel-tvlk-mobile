@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.data.local
+package com.traveloka.hotel.core.data.local
 
 import android.content.Context
 import com.google.android.gms.maps.model.LatLng

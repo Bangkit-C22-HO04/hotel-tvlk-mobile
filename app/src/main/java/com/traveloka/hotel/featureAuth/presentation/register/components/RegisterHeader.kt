@@ -19,7 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.traveloka.hotel.R
-import com.traveloka.hotel.common.presentation.navigation.HotelScreens
+import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 
 @Composable
 fun RegisterHeader(navController: NavController) {

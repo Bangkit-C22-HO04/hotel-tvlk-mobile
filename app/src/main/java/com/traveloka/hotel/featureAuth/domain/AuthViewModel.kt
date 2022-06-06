@@ -3,8 +3,8 @@ package com.traveloka.hotel.featureAuth.domain
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.traveloka.hotel.common.data.ResultApi
-import com.traveloka.hotel.common.util.NetworkUtils
+import com.traveloka.hotel.core.data.ResultApi
+import com.traveloka.hotel.core.util.NetworkUtils
 import com.traveloka.hotel.featureAuth.data.AuthRepository
 import com.traveloka.hotel.featureAuth.data.model.login.LoginRequest
 import com.traveloka.hotel.featureAuth.data.model.login.LoginResponse

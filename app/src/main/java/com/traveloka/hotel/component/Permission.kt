@@ -15,8 +15,8 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
-import com.traveloka.hotel.common.domain.MainViewModel
-import com.traveloka.hotel.common.domain.MainViewModelFactory
+import com.traveloka.hotel.core.domain.MainViewModel
+import com.traveloka.hotel.core.domain.MainViewModelFactory
 
 fun checkPermission(context: Context, permission: String): Boolean {
     return ContextCompat.checkSelfPermission(

@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.util
+package com.traveloka.hotel.core.util
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat

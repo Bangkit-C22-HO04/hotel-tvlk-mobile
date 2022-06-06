@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.presentation.navigation
+package com.traveloka.hotel.core.presentation.navigation
 
 enum class HotelScreens {
     DetailsScreen,

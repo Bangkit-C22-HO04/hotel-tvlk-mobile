@@ -26,7 +26,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.traveloka.hotel.R
-import com.traveloka.hotel.common.presentation.navigation.HotelScreens
+import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 import com.traveloka.hotel.featureHotel.data.model.Hotel
 import com.traveloka.hotel.ui.theme.Grey
 import com.traveloka.hotel.ui.theme.GreyLine

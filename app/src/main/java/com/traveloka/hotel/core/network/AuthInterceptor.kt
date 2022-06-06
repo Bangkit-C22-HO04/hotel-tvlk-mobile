@@ -1,7 +1,7 @@
-package com.traveloka.hotel.common.network
+package com.traveloka.hotel.core.network
 
 import android.content.Context
-import com.traveloka.hotel.common.data.local.UserPreference
+import com.traveloka.hotel.core.data.local.UserPreference
 import okhttp3.Interceptor
 import okhttp3.Response
 

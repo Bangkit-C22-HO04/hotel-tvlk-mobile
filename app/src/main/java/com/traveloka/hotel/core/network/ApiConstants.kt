@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.network
+package com.traveloka.hotel.core.network
 
 object ApiConstants {
     const val BASE_URL = "https://cc-auth-2ywgebensa-as.a.run.app/"

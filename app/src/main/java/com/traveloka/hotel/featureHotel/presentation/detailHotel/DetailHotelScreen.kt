@@ -22,8 +22,8 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.traveloka.hotel.R
-import com.traveloka.hotel.common.presentation.navigation.HotelScreens
 import com.traveloka.hotel.component.WrapperFunc.WithAuth
+import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 import com.traveloka.hotel.featureHotel.presentation.detailHotel.components.Content
 import com.traveloka.hotel.featureHotel.presentation.detailHotel.components.Reviews
 import com.traveloka.hotel.featureHotel.util.getHotels

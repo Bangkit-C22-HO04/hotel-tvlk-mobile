@@ -1,6 +1,5 @@
 package com.traveloka.hotel.featureAuth.presentation.login.components
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,11 +19,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
-import com.traveloka.hotel.common.data.ResultApi
-import com.traveloka.hotel.common.presentation.navigation.HotelScreens
 import com.traveloka.hotel.component.button.MButton
 import com.traveloka.hotel.component.form.EmailField
 import com.traveloka.hotel.component.form.PasswordField
+import com.traveloka.hotel.core.data.ResultApi
+import com.traveloka.hotel.core.presentation.navigation.HotelScreens
+import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureAuth.data.model.login.LoginRequest
 import com.traveloka.hotel.featureAuth.domain.AuthViewModel
 import com.traveloka.hotel.featureAuth.domain.AuthViewModelFactory
@@ -75,21 +75,13 @@ fun LoginForm(
                     viewModel.clearForm()
                     navController.navigate(HotelScreens.ListHotelScreen.name)
                 } else {
-                    Toast.makeText(
-                        mContext,
-                        mContext.getText(R.string.token_not_provided),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    showToast(mContext, text = mContext.getText(R.string.token_not_provided))
                 }
             }
             is ResultApi.Failure -> {
                 isSubmitEnabled = true
                 isLoading = false
-                Toast.makeText(
-                    mContext,
-                    loginStateVal.error,
-                    Toast.LENGTH_LONG
-                ).show()
+                showToast(mContext, text = loginStateVal.error)
             }
             is ResultApi.Loading -> {
                 isSubmitEnabled = false

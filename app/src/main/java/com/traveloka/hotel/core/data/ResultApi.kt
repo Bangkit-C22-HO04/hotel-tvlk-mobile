@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.data
+package com.traveloka.hotel.core.data
 
 sealed class ResultApi<out T> {
     object Loading : ResultApi<Nothing>()

@@ -20,7 +20,7 @@
         android:theme="@style/Theme.Hotelmobile"
         tools:targetApi="31">
         <activity
-            android:name="com.traveloka.hotel.common.presentation.MainActivity"
+            android:name="com.traveloka.hotel.core.presentation.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Hotelmobile">
             <intent-filter>

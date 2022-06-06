@@ -1,6 +1,5 @@
 package com.traveloka.hotel.featureAuth.presentation.register.components
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,13 +16,14 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.traveloka.hotel.R
-import com.traveloka.hotel.common.data.ResultApi
-import com.traveloka.hotel.common.presentation.navigation.HotelScreens
 import com.traveloka.hotel.component.button.MButton
 import com.traveloka.hotel.component.form.DateField
 import com.traveloka.hotel.component.form.EmailField
 import com.traveloka.hotel.component.form.PasswordField
 import com.traveloka.hotel.component.form.RadioField
+import com.traveloka.hotel.core.data.ResultApi
+import com.traveloka.hotel.core.presentation.navigation.HotelScreens
+import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureAuth.data.model.register.RegisterRequest
 import com.traveloka.hotel.featureAuth.domain.AuthViewModel
 import com.traveloka.hotel.featureAuth.domain.AuthViewModelFactory
@@ -69,21 +69,13 @@ fun RegisterForm(
                 isSubmitEnabled = true
                 isLoading = false
                 viewModel.clearForm()
-                Toast.makeText(
-                    mContext,
-                    registerStateVal.data,
-                    Toast.LENGTH_LONG
-                ).show()
+                showToast(mContext, text = registerStateVal.data.toString())
                 navController.navigate(HotelScreens.LoginScreen.name)
             }
             is ResultApi.Failure -> {
                 isSubmitEnabled = true
                 isLoading = false
-                Toast.makeText(
-                    mContext,
-                    registerStateVal.error,
-                    Toast.LENGTH_LONG
-                ).show()
+                showToast(mContext, text = registerStateVal.error)
             }
             is ResultApi.Loading -> {
                 isSubmitEnabled = false

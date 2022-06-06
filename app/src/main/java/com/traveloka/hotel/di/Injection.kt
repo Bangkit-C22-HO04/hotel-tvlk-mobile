@@ -1,9 +1,9 @@
 package com.traveloka.hotel.di
 
 import android.content.Context
-import com.traveloka.hotel.common.data.MainRepository
-import com.traveloka.hotel.common.data.local.UserPreference
-import com.traveloka.hotel.common.network.ApiConfig
+import com.traveloka.hotel.core.data.MainRepository
+import com.traveloka.hotel.core.data.local.UserPreference
+import com.traveloka.hotel.core.network.ApiConfig
 import com.traveloka.hotel.featureAuth.data.AuthRepository
 
 object Injection {

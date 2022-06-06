@@ -1,8 +1,8 @@
-package com.traveloka.hotel.common.domain
+package com.traveloka.hotel.core.domain
 
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.maps.model.LatLng
-import com.traveloka.hotel.common.data.MainRepository
+import com.traveloka.hotel.core.data.MainRepository
 
 
 class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {

@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.presentation.navigation
+package com.traveloka.hotel.core.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.traveloka.hotel.common.presentation.screens.introduction.IntroScreen
+import com.traveloka.hotel.core.presentation.screens.introduction.IntroScreen
 import com.traveloka.hotel.featureAuth.presentation.login.LoginScreen
 import com.traveloka.hotel.featureAuth.presentation.register.RegisterScreen
 import com.traveloka.hotel.featureHotel.presentation.detailHotel.DetailHotelScreen

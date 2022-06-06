@@ -1,7 +1,7 @@
-package com.traveloka.hotel.common.data
+package com.traveloka.hotel.core.data
 
 import com.google.android.gms.maps.model.LatLng
-import com.traveloka.hotel.common.data.local.IUserPreference
+import com.traveloka.hotel.core.data.local.IUserPreference
 
 class MainRepository(private val userPreference: IUserPreference) {
     fun setLocation(location: LatLng) = userPreference.setLocation(location)
