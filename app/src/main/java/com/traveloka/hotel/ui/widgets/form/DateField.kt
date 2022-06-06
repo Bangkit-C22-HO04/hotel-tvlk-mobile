@@ -32,19 +32,25 @@ fun DateField(
     val datePickerDialog = DatePickerDialog(
         context,
         { _: DatePicker, getYear: Int, getMonth: Int, getDayOfMonth: Int ->
-            date.value = "$getDayOfMonth/${getMonth + 1}/$getYear"
+            date.value = "$getYear-${(getMonth + 1).toString().padStart(2, '0')}-${
+                getDayOfMonth.toString().padStart(2, '0')
+            }"
+            onValueChange(date.value)
             year.value = getYear
-            month.value = getMonth + 1
+            month.value = getMonth
             day.value = getDayOfMonth
         }, year.value, month.value, day.value
     )
+
+    datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+
 
     BaseField(
         enabled = false,
         onClick = { datePickerDialog.show() },
         modifier = modifier,
         value = date.value,
-        onValueChange = onValueChange,
+        onValueChange = { newDate -> onValueChange(newDate) },
         placeholder = placeholder,
         title = title,
         trailingIcon = {

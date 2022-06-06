@@ -42,7 +42,7 @@ fun RegisterBody(navController: NavController) {
         )
         Spacer(modifier = Modifier.height(25.dp))
 
-        RegisterForm()
+        RegisterForm(navController = navController)
 
         Text(
             text = buildAnnotatedString {

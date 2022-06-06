@@ -16,6 +16,7 @@ import com.traveloka.hotel.presentation.screens.register.components.RegisterHead
 import com.traveloka.hotel.ui.theme.BlueBg
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 import com.traveloka.hotel.utils.WithLocation
+import com.traveloka.hotel.utils.WrapperFunc.WithNonAuth
 
 
 @Composable
@@ -23,24 +24,26 @@ fun RegisterScreen(
     navController: NavController
 
 ) {
-    WithLocation {
-        Box(
-            modifier = Modifier
-                .background(BlueBg)
-                .fillMaxSize()
-        ) {
-            Column {
+    WithNonAuth(navController = navController) {
+        WithLocation {
+            Box(
+                modifier = Modifier
+                    .background(BlueBg)
+                    .fillMaxSize()
+            ) {
+                Column {
 
-                RegisterHeader(navController)
-                Spacer(modifier = Modifier.height(8.dp))
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight()
-                        .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-                        .background(Color.White)
-                ) {
-                    RegisterBody(navController)
+                    RegisterHeader(navController)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                            .background(Color.White)
+                    ) {
+                        RegisterBody(navController)
+                    }
                 }
             }
         }

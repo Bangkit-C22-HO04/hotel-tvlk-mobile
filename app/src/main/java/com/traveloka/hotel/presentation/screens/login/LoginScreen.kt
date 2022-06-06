@@ -15,27 +15,31 @@ import com.traveloka.hotel.presentation.screens.login.components.LoginBody
 import com.traveloka.hotel.presentation.screens.login.components.LoginHeader
 import com.traveloka.hotel.ui.theme.BlueBg
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
+import com.traveloka.hotel.utils.WrapperFunc.WithNonAuth
 
 @Composable
 fun LoginScreen(navController: NavController) {
-    Box(
-        modifier = Modifier
-            .background(BlueBg)
-            .fillMaxSize()
-    ) {
-        Column {
+    WithNonAuth(navController = navController) {
 
-            LoginHeader(navController)
-            Spacer(modifier = Modifier.height(8.dp))
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-                    .background(Color.White)
-            ) {
+        Box(
+            modifier = Modifier
+                .background(BlueBg)
+                .fillMaxSize()
+        ) {
+            Column {
 
-                LoginBody(navController)
+                LoginHeader(navController)
+                Spacer(modifier = Modifier.height(8.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight()
+                        .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                        .background(Color.White)
+                ) {
+
+                    LoginBody(navController)
+                }
             }
         }
     }
