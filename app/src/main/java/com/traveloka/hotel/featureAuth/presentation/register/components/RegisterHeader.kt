@@ -1,4 +1,4 @@
-package com.traveloka.hotel.featureRegister.presentation.components
+package com.traveloka.hotel.featureAuth.presentation.register.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth

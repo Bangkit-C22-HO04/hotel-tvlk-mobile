@@ -1,7 +1,7 @@
 package com.traveloka.hotel.common.network
 
-import com.traveloka.hotel.featureLogin.data.model.LoginResponse
-import com.traveloka.hotel.featureRegister.data.model.RegisterResponse
+import com.traveloka.hotel.featureAuth.data.model.login.LoginResponse
+import com.traveloka.hotel.featureAuth.data.model.register.RegisterResponse
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body

@@ -1,4 +1,4 @@
-package com.traveloka.hotel.featureLogin.presentation.components
+package com.traveloka.hotel.featureAuth.presentation.login.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
 import com.traveloka.hotel.common.presentation.navigation.HotelScreens
-import com.traveloka.hotel.common.presentation.screens.login.LoginScreen
+import com.traveloka.hotel.featureAuth.presentation.login.LoginScreen
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 
 @Composable

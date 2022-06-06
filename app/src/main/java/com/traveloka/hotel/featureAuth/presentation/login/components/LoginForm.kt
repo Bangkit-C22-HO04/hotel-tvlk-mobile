@@ -1,4 +1,4 @@
-package com.traveloka.hotel.featureRegister.presentation.components
+package com.traveloka.hotel.featureAuth.presentation.login.components
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
@@ -13,37 +13,36 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
 import com.traveloka.hotel.common.data.ResultApi
 import com.traveloka.hotel.common.presentation.navigation.HotelScreens
 import com.traveloka.hotel.component.button.MButton
-import com.traveloka.hotel.component.form.DateField
 import com.traveloka.hotel.component.form.EmailField
 import com.traveloka.hotel.component.form.PasswordField
-import com.traveloka.hotel.component.form.RadioField
-import com.traveloka.hotel.featureRegister.data.model.RegisterRequest
-import com.traveloka.hotel.featureRegister.domain.RegisterViewModel
-import com.traveloka.hotel.featureRegister.domain.RegisterViewModelFactory
+import com.traveloka.hotel.featureAuth.data.model.login.LoginRequest
+import com.traveloka.hotel.featureAuth.domain.AuthViewModel
+import com.traveloka.hotel.featureAuth.domain.AuthViewModelFactory
+import com.traveloka.hotel.featureAuth.presentation.login.LoginScreen
+import com.traveloka.hotel.ui.theme.HotelmobileTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun RegisterForm(
-    viewModel: RegisterViewModel = viewModel(
-        factory = RegisterViewModelFactory.getInstance(LocalContext.current)
-    ),
-    navController: NavController
+fun LoginForm(
+    navController: NavController,
+    viewModel: AuthViewModel = viewModel(factory = AuthViewModelFactory.getInstance(LocalContext.current))
 ) {
-    val options = listOf(stringResource(R.string.male), stringResource(R.string.female))
     val mContext = LocalContext.current
 
-    val registerState = viewModel.registerState
+    val loginState = viewModel.loginState
     val emailState = viewModel.email
     val passwordState = viewModel.password
-    val genderState = viewModel.gender
-    val birthDateState = viewModel.birthDate
+
     val keyboardController = LocalSoftwareKeyboardController.current
 
     var isSubmitEnabled by remember {
@@ -52,36 +51,43 @@ fun RegisterForm(
     var isLoading by remember {
         mutableStateOf(false)
     }
-    val handleRegister = {
-        viewModel.register(
-            RegisterRequest(
+    val handleLogin = {
+        viewModel.login(
+            LoginRequest(
                 email = emailState.value,
-                password = passwordState.value,
-                gender = genderState.value,
-                birthDate = birthDateState.value
+                password = passwordState.value
             )
         )
     }
 
-    LaunchedEffect(registerState.value) {
-        when (val registerStateVal = registerState.value) {
+    LaunchedEffect(emailState.value, passwordState.value) {
+        isSubmitEnabled = emailState.value.isNotBlank() && passwordState.value.isNotBlank()
+    }
+
+    LaunchedEffect(loginState.value) {
+        when (val loginStateVal = loginState.value) {
             is ResultApi.Success -> {
                 isSubmitEnabled = true
                 isLoading = false
-                viewModel.clearForm()
-                Toast.makeText(
-                    mContext,
-                    registerStateVal.data,
-                    Toast.LENGTH_LONG
-                ).show()
-                navController.navigate(HotelScreens.LoginScreen.name)
+                val token = loginStateVal.data
+                if (!token.isNullOrEmpty()) {
+                    viewModel.setToken(token)
+                    viewModel.clearForm()
+                    navController.navigate(HotelScreens.ListHotelScreen.name)
+                } else {
+                    Toast.makeText(
+                        mContext,
+                        mContext.getText(R.string.token_not_provided),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
             is ResultApi.Failure -> {
                 isSubmitEnabled = true
                 isLoading = false
                 Toast.makeText(
                     mContext,
-                    registerStateVal.error,
+                    loginStateVal.error,
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -91,12 +97,6 @@ fun RegisterForm(
             }
             else -> {}
         }
-
-    }
-
-    LaunchedEffect(emailState.value, passwordState.value, genderState.value, birthDateState.value) {
-        isSubmitEnabled =
-            emailState.value.isNotBlank() && passwordState.value.isNotBlank() && genderState.value.isNotBlank() && birthDateState.value.isNotBlank()
     }
 
     Column(
@@ -117,28 +117,27 @@ fun RegisterForm(
             onValueChange = { viewModel.setPassword(it) },
             placeholder = stringResource(R.string.password_hint),
             title = stringResource(R.string.password),
+            imeAction = ImeAction.Done,
             keyboardActions = KeyboardActions(onDone = {
                 keyboardController?.hide()
             })
         )
-        RadioField(
-            title = stringResource(R.string.gender),
-            options = options,
-            selectedItem = genderState.value,
-            onValueChange = { newGender -> viewModel.setGender(newGender) }
-        )
-        DateField(
-            onValueChange = { viewModel.setBirthDate(it) },
-            placeholder = "yyyy-mm-dd",
-            title = stringResource(R.string.birth_date)
-        )
+
 
         MButton(
-            modifier = Modifier.widthIn(min = 200.dp),
             enabled = isSubmitEnabled,
+            modifier = Modifier.widthIn(min = 200.dp),
             isLoading = isLoading,
-            text = stringResource(R.string.register),
-            onClick = handleRegister
+            text = stringResource(R.string.log_in),
+            onClick = handleLogin
         )
+    }
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun LoginFormPreview() {
+    HotelmobileTheme {
+        LoginScreen(rememberNavController())
     }
 }

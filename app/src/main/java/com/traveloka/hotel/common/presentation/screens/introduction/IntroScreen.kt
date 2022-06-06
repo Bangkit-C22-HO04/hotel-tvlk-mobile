@@ -18,7 +18,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
 import com.traveloka.hotel.common.presentation.navigation.HotelScreens
-import com.traveloka.hotel.common.util.WrapperFunc.WithNonAuth
+import com.traveloka.hotel.component.WrapperFunc.WithNonAuth
 import com.traveloka.hotel.component.button.MButton
 import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.BlueDark

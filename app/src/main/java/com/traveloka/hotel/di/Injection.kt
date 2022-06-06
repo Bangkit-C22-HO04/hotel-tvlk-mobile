@@ -4,8 +4,7 @@ import android.content.Context
 import com.traveloka.hotel.common.data.MainRepository
 import com.traveloka.hotel.common.data.local.UserPreference
 import com.traveloka.hotel.common.network.ApiConfig
-import com.traveloka.hotel.featureLogin.data.LoginRepository
-import com.traveloka.hotel.featureRegister.data.RegisterRepository
+import com.traveloka.hotel.featureAuth.data.AuthRepository
 
 object Injection {
     fun provideMainRepository(context: Context): MainRepository {
@@ -13,13 +12,10 @@ object Injection {
         return MainRepository.getInstance(mUserPreference)
     }
 
-    fun provideLoginRepository(context: Context): LoginRepository {
+    fun provideAuthRepository(context: Context): AuthRepository {
         val apiService = ApiConfig.getApiService(context)
-        return LoginRepository.getInstance(apiService)
+        val mUserPreference = UserPreference(context)
+        return AuthRepository.getInstance(apiService, mUserPreference)
     }
 
-    fun provideRegisterRepository(context: Context): RegisterRepository {
-        val apiService = ApiConfig.getApiService(context)
-        return RegisterRepository.getInstance(apiService)
-    }
 }

@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.presentation.screens.login
+package com.traveloka.hotel.featureAuth.presentation.login
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,9 +11,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.traveloka.hotel.common.util.WrapperFunc.WithNonAuth
-import com.traveloka.hotel.featureLogin.presentation.components.LoginBody
-import com.traveloka.hotel.featureLogin.presentation.components.LoginHeader
+import com.traveloka.hotel.component.WrapperFunc.WithNonAuth
+import com.traveloka.hotel.featureAuth.presentation.login.components.LoginBody
+import com.traveloka.hotel.featureAuth.presentation.login.components.LoginHeader
 import com.traveloka.hotel.ui.theme.BlueBg
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 

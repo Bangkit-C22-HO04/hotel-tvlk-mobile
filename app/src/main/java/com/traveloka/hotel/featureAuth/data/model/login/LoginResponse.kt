@@ -1,4 +1,4 @@
-package com.traveloka.hotel.featureLogin.data.model
+package com.traveloka.hotel.featureAuth.data.model.login
 
 import com.google.gson.annotations.SerializedName
 

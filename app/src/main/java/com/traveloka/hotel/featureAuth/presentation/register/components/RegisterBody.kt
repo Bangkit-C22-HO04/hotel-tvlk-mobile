@@ -1,4 +1,4 @@
-package com.traveloka.hotel.featureRegister.presentation.components
+package com.traveloka.hotel.featureAuth.presentation.register.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
