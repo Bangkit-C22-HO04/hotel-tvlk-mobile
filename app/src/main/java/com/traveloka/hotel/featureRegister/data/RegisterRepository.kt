@@ -1,12 +1,12 @@
 package com.traveloka.hotel.featureRegister.data
 
 import com.traveloka.hotel.common.network.ApiService
+import com.traveloka.hotel.featureRegister.domain.IRegisterRepository
 import okhttp3.RequestBody
 
-class RegisterRepository(private val apiService: ApiService) {
+class RegisterRepository(private val apiService: ApiService) : IRegisterRepository {
 
-    fun register(request: RequestBody) = apiService.postRegister(request)
-    fun login(request: RequestBody) = apiService.postLogin(request)
+    override fun register(request: RequestBody) = apiService.postRegister(request)
 
     companion object {
         @Volatile

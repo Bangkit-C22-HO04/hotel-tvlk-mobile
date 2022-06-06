@@ -1,4 +1,4 @@
-package com.traveloka.hotel.featureRegister.domain
+package com.traveloka.hotel.featureRegister.presentation.viewModel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
-import com.traveloka.hotel.common.util.WrapperFunc.WithAuth
+import com.traveloka.hotel.component.WrapperFunc.WithAuth
 import com.traveloka.hotel.featureHotel.presentation.listHotel.components.FilterBox
 import com.traveloka.hotel.featureHotel.presentation.listHotel.components.HotelList
 import com.traveloka.hotel.ui.theme.Blue

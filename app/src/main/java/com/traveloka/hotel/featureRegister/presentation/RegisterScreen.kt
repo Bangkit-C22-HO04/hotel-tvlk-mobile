@@ -11,8 +11,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.traveloka.hotel.common.util.WithLocation
-import com.traveloka.hotel.common.util.WrapperFunc.WithNonAuth
+import com.traveloka.hotel.component.WithLocation
+import com.traveloka.hotel.component.WrapperFunc.WithNonAuth
 import com.traveloka.hotel.featureRegister.presentation.components.RegisterBody
 import com.traveloka.hotel.featureRegister.presentation.components.RegisterHeader
 import com.traveloka.hotel.ui.theme.BlueBg

@@ -1,4 +1,4 @@
-package com.traveloka.hotel.common.util
+package com.traveloka.hotel.component
 
 import android.Manifest
 import android.content.Context

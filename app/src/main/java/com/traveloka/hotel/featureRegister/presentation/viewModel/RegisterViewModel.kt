@@ -1,4 +1,4 @@
-package com.traveloka.hotel.featureRegister.domain
+package com.traveloka.hotel.featureRegister.presentation.viewModel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

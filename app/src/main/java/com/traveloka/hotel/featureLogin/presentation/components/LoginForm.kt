@@ -28,8 +28,8 @@ import com.traveloka.hotel.component.button.MButton
 import com.traveloka.hotel.component.form.EmailField
 import com.traveloka.hotel.component.form.PasswordField
 import com.traveloka.hotel.featureLogin.data.model.LoginRequest
-import com.traveloka.hotel.featureLogin.domain.LoginViewModel
-import com.traveloka.hotel.featureLogin.domain.LoginViewModelFactory
+import com.traveloka.hotel.featureLogin.presentation.viewModel.LoginViewModel
+import com.traveloka.hotel.featureLogin.presentation.viewModel.LoginViewModelFactory
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 
 @OptIn(ExperimentalComposeUiApi::class)

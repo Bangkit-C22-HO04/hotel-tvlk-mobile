@@ -25,8 +25,8 @@ import com.traveloka.hotel.component.form.EmailField
 import com.traveloka.hotel.component.form.PasswordField
 import com.traveloka.hotel.component.form.RadioField
 import com.traveloka.hotel.featureRegister.data.model.RegisterRequest
-import com.traveloka.hotel.featureRegister.domain.RegisterViewModel
-import com.traveloka.hotel.featureRegister.domain.RegisterViewModelFactory
+import com.traveloka.hotel.featureRegister.presentation.viewModel.RegisterViewModel
+import com.traveloka.hotel.featureRegister.presentation.viewModel.RegisterViewModelFactory
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable

@@ -19,7 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.traveloka.hotel.R
-import com.traveloka.hotel.common.util.WithLocation
+import com.traveloka.hotel.component.WithLocation
 import com.traveloka.hotel.featureHotel.util.TRAVEL_PURPOSE_OPTIONS
 import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.BlueDark

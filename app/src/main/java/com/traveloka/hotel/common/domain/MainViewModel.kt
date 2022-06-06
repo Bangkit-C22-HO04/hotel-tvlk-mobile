@@ -13,4 +13,7 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     }
 
     fun getLocation() = mainRepository.getLocation()
+
+    fun getToken() = mainRepository.getToken()
+    fun setToken(token: String) = mainRepository.setToken(token)
 }
