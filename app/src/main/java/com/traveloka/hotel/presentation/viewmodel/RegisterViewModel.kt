@@ -29,8 +29,8 @@ class RegisterViewModel(private val registerRepository: RegisterRepository) : Vi
     private val _gender = mutableStateOf("")
     val gender: State<String> = _gender
 
-    private val _registerState = mutableStateOf<ResultApi<String>?>(null)
-    val registerState: State<ResultApi<String>?> = _registerState
+    private val _registerState = mutableStateOf<ResultApi<String>>(ResultApi.Idle)
+    val registerState: State<ResultApi<String>> = _registerState
 
     fun setEmail(newEmail: String) {
         _email.value = newEmail

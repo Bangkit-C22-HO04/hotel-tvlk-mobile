@@ -64,14 +64,14 @@ fun RegisterForm(
     }
 
     LaunchedEffect(registerState.value) {
-        when (registerState.value) {
+        when (val registerStateVal = registerState.value) {
             is ResultApi.Success -> {
                 isSubmitEnabled = true
                 isLoading = false
                 viewModel.clearForm()
                 Toast.makeText(
                     mContext,
-                    (registerState.value as ResultApi.Success<String>).data,
+                    registerStateVal.data,
                     Toast.LENGTH_LONG
                 ).show()
                 navController.navigate(HotelScreens.LoginScreen.name)
@@ -81,7 +81,7 @@ fun RegisterForm(
                 isLoading = false
                 Toast.makeText(
                     mContext,
-                    (registerState.value as ResultApi.Failure).error,
+                    registerStateVal.error,
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -91,6 +91,7 @@ fun RegisterForm(
             }
             else -> {}
         }
+
     }
 
     LaunchedEffect(emailState.value, passwordState.value, genderState.value, birthDateState.value) {

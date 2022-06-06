@@ -1,7 +1,6 @@
 package com.traveloka.hotel.data.api
 
 import android.content.Context
-import android.util.Log
 import com.traveloka.hotel.data.local.UserPreference
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -17,7 +16,6 @@ class AuthInterceptor(context: Context) : Interceptor {
 
         // If token has been saved, add it to the request
         userPreference.fetchAuthToken()?.let {
-            Log.d("JWT-TOKEN", "intercept: $it")
             requestBuilder.addHeader("Authorization", "Bearer $it")
         }
 

@@ -66,11 +66,11 @@ fun LoginForm(
     }
 
     LaunchedEffect(loginState.value) {
-        when (loginState.value) {
+        when (val loginStateVal = loginState.value) {
             is ResultApi.Success -> {
                 isSubmitEnabled = true
                 isLoading = false
-                val token = (loginState.value as ResultApi.Success<String>).data
+                val token = loginStateVal.data
                 val userPreference = UserPreference.UserPreference(mContext)
                 if (!token.isNullOrEmpty()) {
                     userPreference.saveAuthToken(token)
@@ -82,7 +82,7 @@ fun LoginForm(
                 isLoading = false
                 Toast.makeText(
                     mContext,
-                    (loginState.value as ResultApi.Failure).error,
+                    loginStateVal.error,
                     Toast.LENGTH_LONG
                 ).show()
             }
