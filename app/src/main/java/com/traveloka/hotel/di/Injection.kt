@@ -1,11 +1,10 @@
 package com.traveloka.hotel.di
 
 import android.content.Context
-import com.traveloka.hotel.data.api.ApiConfig
-import com.traveloka.hotel.data.local.UserPreference
-import com.traveloka.hotel.data.repository.LoginRepository
-import com.traveloka.hotel.data.repository.MainRepository
-import com.traveloka.hotel.data.repository.RegisterRepository
+import com.traveloka.hotel.common.data.MainRepository
+import com.traveloka.hotel.common.data.local.UserPreference
+import com.traveloka.hotel.common.network.ApiConfig
+import com.traveloka.hotel.featureAuth.data.AuthRepository
 
 object Injection {
     fun provideMainRepository(context: Context): MainRepository {
@@ -13,13 +12,10 @@ object Injection {
         return MainRepository.getInstance(mUserPreference)
     }
 
-    fun provideLoginRepository(context: Context): LoginRepository {
+    fun provideAuthRepository(context: Context): AuthRepository {
         val apiService = ApiConfig.getApiService(context)
-        return LoginRepository.getInstance(apiService)
+        val mUserPreference = UserPreference(context)
+        return AuthRepository.getInstance(apiService, mUserPreference)
     }
 
-    fun provideRegisterRepository(context: Context): RegisterRepository {
-        val apiService = ApiConfig.getApiService(context)
-        return RegisterRepository.getInstance(apiService)
-    }
 }
