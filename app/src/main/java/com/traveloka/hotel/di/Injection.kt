@@ -9,7 +9,7 @@ import com.traveloka.hotel.data.repository.RegisterRepository
 
 object Injection {
     fun provideMainRepository(context: Context): MainRepository {
-        val mUserPreference = UserPreference.UserPreference(context)
+        val mUserPreference = UserPreference(context)
         return MainRepository.getInstance(mUserPreference)
     }
 

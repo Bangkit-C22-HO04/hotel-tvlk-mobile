@@ -71,7 +71,7 @@ fun LoginForm(
                 isSubmitEnabled = true
                 isLoading = false
                 val token = loginStateVal.data
-                val userPreference = UserPreference.UserPreference(mContext)
+                val userPreference = UserPreference(mContext)
                 if (!token.isNullOrEmpty()) {
                     userPreference.saveAuthToken(token)
                 }

@@ -12,7 +12,7 @@ object WrapperFunc {
     @Composable
     fun WithAuth(navController: NavController, content: @Composable () -> Unit) {
         val context = LocalContext.current
-        val userPreference = UserPreference.UserPreference(context)
+        val userPreference = UserPreference(context)
 
         LaunchedEffect(userPreference.fetchAuthToken()) {
             if (userPreference.fetchAuthToken().isNullOrEmpty()) {
@@ -29,7 +29,7 @@ object WrapperFunc {
     @Composable
     fun WithNonAuth(navController: NavController, content: @Composable () -> Unit) {
         val context = LocalContext.current
-        val userPreference = UserPreference.UserPreference(context)
+        val userPreference = UserPreference(context)
 
         LaunchedEffect(userPreference.fetchAuthToken()) {
             if (!userPreference.fetchAuthToken().isNullOrEmpty()) {
