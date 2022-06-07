@@ -26,13 +26,13 @@ fun getHotels(): List<Hotel> {
 
         val hotel = hotelsJson.getJSONObject(i)
         val hotelModel = Hotel(
-            id = hotel["id"].toString(),
-            imgUrl = hotel["imgUrl"].toString(),
+            id = hotel["id"].toString().toLong(),
+            imageUrl = hotel["imgUrl"].toString(),
             name = hotel["name"].toString(),
-            city = hotel["city"].toString(),
-            price = hotel["price"].toString().toLong(),
+            location = hotel["city"].toString(),
+            price = hotel["price"].toString(),
             rating = hotel["rating"].toString().toDouble(),
-            reviews = hotel["reviews"].toString().toLong(),
+            totalReview = hotel["reviews"].toString().toInt(),
             type = hotel["type"].toString(),
         )
         hotels.add(hotelModel)

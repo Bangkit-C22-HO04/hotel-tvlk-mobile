@@ -53,7 +53,7 @@ fun Content(hotel: Hotel) {
                     tint = GreyLine
                 )
                 Text(
-                    text = hotel.city,
+                    text = hotel.location,
                     style = MaterialTheme.typography.body2,
                     color = Grey,
                 )
@@ -77,7 +77,7 @@ fun Content(hotel: Hotel) {
                         ) {
                             append(hotel.rating.toString())
                         }
-                        append(" (${hotel.reviews} reviews)")
+                        append(" (${hotel.totalReview} reviews)")
                     },
                     style = MaterialTheme.typography.body2,
                     color = GreyLine

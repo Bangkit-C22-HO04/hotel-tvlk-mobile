@@ -44,7 +44,7 @@ fun HotelItem(hotel: Hotel, navController: NavController) {
         Row {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(hotel.imgUrl)
+                    .data(hotel.imageUrl)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(id = R.drawable.logo_full_color),
@@ -88,7 +88,7 @@ fun HotelItem(hotel: Hotel, navController: NavController) {
                                 ) {
                                     append(hotel.rating.toString())
                                 }
-                                append(" (${hotel.reviews} reviews)")
+                                append(" (${hotel.totalReview} reviews)")
                             },
                             style = MaterialTheme.typography.subtitle1,
                             color = GreyLine
@@ -104,7 +104,7 @@ fun HotelItem(hotel: Hotel, navController: NavController) {
                             tint = GreyLine
                         )
                         Text(
-                            text = hotel.city,
+                            text = hotel.location,
                             style = MaterialTheme.typography.subtitle1,
                             color = Grey,
                         )
@@ -113,7 +113,7 @@ fun HotelItem(hotel: Hotel, navController: NavController) {
                 }
                 Text(
                     text = buildAnnotatedString {
-                        append("Rp ${hotel.price}")
+                        append(hotel.price)
                         withStyle(
                             style = SpanStyle(
                                 color = GreyLine,
