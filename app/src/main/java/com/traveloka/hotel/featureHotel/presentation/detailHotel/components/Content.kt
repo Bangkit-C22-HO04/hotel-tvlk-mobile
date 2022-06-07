@@ -18,12 +18,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.traveloka.hotel.component.chip.MChip
-import com.traveloka.hotel.featureHotel.data.model.HotelItem
+import com.traveloka.hotel.featureHotel.data.model.Hotel
 import com.traveloka.hotel.featureHotel.util.getHotels
 import com.traveloka.hotel.ui.theme.*
 
 @Composable
-fun Content(hotel: HotelItem) {
+fun Content(hotel: Hotel) {
     Column(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 16.dp)
@@ -53,7 +53,7 @@ fun Content(hotel: HotelItem) {
                     tint = GreyLine
                 )
                 Text(
-                    text = hotel.location,
+                    text = hotel.city,
                     style = MaterialTheme.typography.body2,
                     color = Grey,
                 )
@@ -77,7 +77,7 @@ fun Content(hotel: HotelItem) {
                         ) {
                             append(hotel.rating.toString())
                         }
-                        append(" (${hotel.totalReview} reviews)")
+                        append(" (${hotel.reviews} reviews)")
                     },
                     style = MaterialTheme.typography.body2,
                     color = GreyLine
