@@ -35,12 +35,12 @@ fun DetailHotelScreen(navController: NavController, hotelId: String?) {
 
     WithAuth(navController = navController) {
         getHotels().forEach { hotel ->
-            if (hotelId == hotel.id) {
+            if ("1" == hotel.id.toString()) {
                 Box(Modifier.fillMaxWidth()) {
                     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                         AsyncImage(
                             model = ImageRequest.Builder(LocalContext.current)
-                                .data(hotel.imgUrl)
+                                .data(hotel.imageUrl)
                                 .crossfade(true)
                                 .build(),
                             placeholder = painterResource(id = R.drawable.logo_full_color),
