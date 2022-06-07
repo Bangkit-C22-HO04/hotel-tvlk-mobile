@@ -27,14 +27,14 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.traveloka.hotel.R
 import com.traveloka.hotel.core.presentation.navigation.HotelScreens
-import com.traveloka.hotel.featureHotel.data.model.Hotel
+import com.traveloka.hotel.featureHotel.data.model.HotelItem
 import com.traveloka.hotel.ui.theme.Grey
 import com.traveloka.hotel.ui.theme.GreyLine
 import com.traveloka.hotel.ui.theme.Orange
 import com.traveloka.hotel.ui.theme.YellowStar
 
 @Composable
-fun HotelItem(hotel: Hotel, navController: NavController) {
+fun HotelItem(hotel: HotelItem, navController: NavController) {
     Card(modifier = Modifier
         .fillMaxWidth()
         .clickable {
@@ -44,7 +44,7 @@ fun HotelItem(hotel: Hotel, navController: NavController) {
         Row {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(hotel.imgUrl)
+                    .data(hotel.imageUrl)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(id = R.drawable.logo_full_color),
@@ -88,7 +88,7 @@ fun HotelItem(hotel: Hotel, navController: NavController) {
                                 ) {
                                     append(hotel.rating.toString())
                                 }
-                                append(" (${hotel.reviews} reviews)")
+                                append(" (${hotel.totalReview} reviews)")
                             },
                             style = MaterialTheme.typography.subtitle1,
                             color = GreyLine
@@ -104,7 +104,7 @@ fun HotelItem(hotel: Hotel, navController: NavController) {
                             tint = GreyLine
                         )
                         Text(
-                            text = hotel.city,
+                            text = hotel.location,
                             style = MaterialTheme.typography.subtitle1,
                             color = Grey,
                         )
