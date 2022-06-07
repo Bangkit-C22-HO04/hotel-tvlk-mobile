@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.core.data.ResultApi
 import com.traveloka.hotel.core.util.showToast
-import com.traveloka.hotel.featureHotel.data.model.HotelItem
+import com.traveloka.hotel.featureHotel.data.model.Hotel
 import com.traveloka.hotel.featureHotel.data.model.HotelListRequest
 import com.traveloka.hotel.featureHotel.domain.HotelViewModel
 import com.traveloka.hotel.featureHotel.presentation.listHotel.ListHotelScreen
@@ -40,7 +40,7 @@ fun HotelList(
 
 
     val hotelList = remember {
-        mutableStateListOf<HotelItem>()
+        mutableStateListOf<Hotel>()
     }
     val isLoading = rememberSaveable {
         mutableStateOf(false)

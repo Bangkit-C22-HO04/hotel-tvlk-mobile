@@ -18,12 +18,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.traveloka.hotel.component.chip.MChip
-import com.traveloka.hotel.featureHotel.data.model.HotelItem
+import com.traveloka.hotel.featureHotel.data.model.Hotel
 import com.traveloka.hotel.featureHotel.util.getHotels
 import com.traveloka.hotel.ui.theme.*
 
 @Composable
-fun Content(hotel: HotelItem) {
+fun Content(hotel: Hotel) {
     Column(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 16.dp)

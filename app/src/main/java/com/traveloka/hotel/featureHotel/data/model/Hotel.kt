@@ -1,12 +1,29 @@
 package com.traveloka.hotel.featureHotel.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Hotel(
-    val id: String,
-    val imgUrl: String,
+    @field:SerializedName("price")
+    val price: String,
+
+    @field:SerializedName("image_url")
+    val imageUrl: String,
+
+    @field:SerializedName("name")
     val name: String,
-    val city: String,
-    val price: Long,
-    val type: String,
+
+    @field:SerializedName("rating")
     val rating: Double,
-    val reviews: Long
+
+    @field:SerializedName("total_review")
+    val totalReview: Int,
+
+    @field:SerializedName("location")
+    val location: String,
+
+    @field:SerializedName("id")
+    val id: Long,
+
+    @field:SerializedName("type")
+    val type: String
 )
