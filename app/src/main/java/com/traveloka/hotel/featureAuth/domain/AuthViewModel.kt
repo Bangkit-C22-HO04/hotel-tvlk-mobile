@@ -78,7 +78,8 @@ class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
                     authRepository.setPassword(request.password)
                     ResultApi.Success(message)
                 } else {
-                    val errorMessage = NetworkUtils.getErrorMessage(response.errorBody()?.string())
+                    val errorMessage =
+                        NetworkUtils.getErrorMessage(response.errorBody()?.string() ?: "")
                     ResultApi.Failure(errorMessage)
                 }
             }
@@ -107,7 +108,8 @@ class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
                     val token = response.body()!!.token
                     ResultApi.Success(token)
                 } else {
-                    val errorMessage = NetworkUtils.getErrorMessage(response.errorBody()?.string())
+                    val errorMessage =
+                        NetworkUtils.getErrorMessage(response.errorBody()?.string() ?: "")
                     ResultApi.Failure(errorMessage)
                 }
             }

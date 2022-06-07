@@ -20,13 +20,28 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.traveloka.hotel.R
 import com.traveloka.hotel.component.WithLocation
+import com.traveloka.hotel.featureHotel.data.model.HotelListRequest
+import com.traveloka.hotel.featureHotel.domain.HotelViewModel
 import com.traveloka.hotel.featureHotel.util.TRAVEL_PURPOSE_OPTIONS
 import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.BlueDark
 import com.traveloka.hotel.ui.theme.Orange
 
 @Composable
-fun FilterBox() {
+fun FilterBox(viewModel: HotelViewModel) {
+
+    val location = viewModel.location
+    val travelPurpose = viewModel.travelPurpose
+
+    val handleSearchHotel = {
+        viewModel.getHotelList(
+            HotelListRequest(
+                location = location.value,
+                travelPurpose = travelPurpose.value
+            )
+        )
+    }
+
     Card(
         modifier = Modifier
             .fillMaxWidth(),
@@ -38,7 +53,7 @@ fun FilterBox() {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Box(modifier = Modifier.weight(1F)) {
-                    DestinationField()
+                    DestinationField(viewModel)
                 }
                 WithLocation { getLocation ->
 
@@ -61,11 +76,11 @@ fun FilterBox() {
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Box(modifier = Modifier.weight(2F)) {
-                    TravelPurposeField()
+                    TravelPurposeField(viewModel)
                 }
                 Button(
                     modifier = Modifier.weight(1F),
-                    onClick = {},
+                    onClick = handleSearchHotel,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Orange)
                 ) {
                     Text(
@@ -81,12 +96,13 @@ fun FilterBox() {
 }
 
 @Composable
-fun DestinationField() {
-    var inputText by remember { mutableStateOf("") }
+fun DestinationField(viewModel: HotelViewModel) {
+    val location = viewModel.location
+
     TextField(
         modifier = Modifier.fillMaxWidth(),
-        value = inputText,
-        onValueChange = { inputText = it },
+        value = location.value,
+        onValueChange = { viewModel.setLocation(it) },
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
         ),
@@ -102,10 +118,10 @@ fun DestinationField() {
 }
 
 @Composable
-fun TravelPurposeField() {
+fun TravelPurposeField(viewModel: HotelViewModel) {
     var expanded by remember { mutableStateOf(false) }
     val suggestions = TRAVEL_PURPOSE_OPTIONS.map { stringResource(id = it) }
-    var selectedText by remember { mutableStateOf("") }
+    val travelPurpose = viewModel.travelPurpose
 
     var textFieldSize by remember { mutableStateOf(Size.Zero) }
 
@@ -119,12 +135,11 @@ fun TravelPurposeField() {
             singleLine = true,
             modifier = Modifier
                 .onGloballyPositioned { coordinates ->
-                    //This value is used to assign to the DropDown the same width
                     textFieldSize = coordinates.size.toSize()
                 }
                 .clickable { expanded = !expanded },
-            value = selectedText,
-            onValueChange = { selectedText = it },
+            value = travelPurpose.value,
+            onValueChange = { viewModel.setTravelPurpose(it) },
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.Transparent,
                 disabledTextColor = LocalContentColor.current.copy(LocalContentAlpha.current)
@@ -152,7 +167,7 @@ fun TravelPurposeField() {
         ) {
             suggestions.forEach { label ->
                 DropdownMenuItem(onClick = {
-                    selectedText = label
+                    viewModel.setTravelPurpose(label)
                 }) {
                     Text(text = label, style = MaterialTheme.typography.body2)
                 }

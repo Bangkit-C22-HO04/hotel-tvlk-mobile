@@ -1,7 +1,7 @@
 package com.traveloka.hotel.featureHotel.util
 
 import com.traveloka.hotel.R
-import com.traveloka.hotel.featureHotel.data.model.Hotel
+import com.traveloka.hotel.featureHotel.data.model.HotelItem
 import org.json.JSONArray
 
 val TRAVEL_PURPOSE_OPTIONS = listOf(
@@ -17,22 +17,22 @@ val TRAVEL_PURPOSE_OPTIONS = listOf(
     R.string.romantic_vacation
 )
 
-fun getHotels(): List<Hotel> {
+fun getHotels(): List<HotelItem> {
 
-    val hotels = mutableListOf<Hotel>()
+    val hotels = mutableListOf<HotelItem>()
     val hotelsJson = JSONArray(hotelJsonArray)
 
     for (i in 0 until hotelsJson.length()) {
 
         val hotel = hotelsJson.getJSONObject(i)
-        val hotelModel = Hotel(
-            id = hotel["id"].toString(),
-            imgUrl = hotel["imgUrl"].toString(),
+        val hotelModel = HotelItem(
+            id = hotel["id"].toString().toLong(),
+            imageUrl = hotel["imgUrl"].toString(),
             name = hotel["name"].toString(),
-            city = hotel["city"].toString(),
-            price = hotel["price"].toString().toLong(),
+            location = hotel["city"].toString(),
+            price = hotel["price"].toString(),
             rating = hotel["rating"].toString().toDouble(),
-            reviews = hotel["reviews"].toString().toLong(),
+            totalReview = hotel["reviews"].toString().toInt(),
             type = hotel["type"].toString(),
         )
         hotels.add(hotelModel)
