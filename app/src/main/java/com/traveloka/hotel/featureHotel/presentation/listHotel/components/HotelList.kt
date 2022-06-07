@@ -1,8 +1,6 @@
 package com.traveloka.hotel.featureHotel.presentation.listHotel.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
@@ -14,6 +12,7 @@ import androidx.compose.material.icons.filled.Apartment
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -76,7 +75,9 @@ fun HotelList(
     }
 
     if (isLoading.value) {
-        CircularProgressIndicator()
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
     } else {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Row(
