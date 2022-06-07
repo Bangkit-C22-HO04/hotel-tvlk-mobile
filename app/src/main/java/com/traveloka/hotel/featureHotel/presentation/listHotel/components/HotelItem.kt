@@ -113,7 +113,7 @@ fun HotelItem(hotel: HotelItem, navController: NavController) {
                 }
                 Text(
                     text = buildAnnotatedString {
-                        append("Rp ${hotel.price}")
+                        append(hotel.price)
                         withStyle(
                             style = SpanStyle(
                                 color = GreyLine,
