@@ -6,8 +6,8 @@ import org.json.JSONObject
 
 object NetworkUtils {
 
-    fun getErrorMessage(jsonString: String = "{\"message\":\"Something Error\"}"): String {
-        val jsonObj = JSONObject(jsonString)
+    fun getErrorMessage(jsonString: String?): String {
+        val jsonObj = JSONObject(jsonString ?: "{\"message\":\"Something Error\"}")
         return jsonObj.getString("message")
     }
 

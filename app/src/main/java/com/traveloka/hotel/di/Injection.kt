@@ -5,7 +5,6 @@ import com.traveloka.hotel.core.data.MainRepository
 import com.traveloka.hotel.core.data.local.UserPreference
 import com.traveloka.hotel.core.network.ApiConfig
 import com.traveloka.hotel.featureAuth.data.AuthRepository
-import com.traveloka.hotel.featureHotel.data.HotelRepository
 
 object Injection {
     fun provideMainRepository(context: Context): MainRepository {
@@ -17,12 +16,6 @@ object Injection {
         val apiService = ApiConfig.getApiService(context)
         val mUserPreference = UserPreference(context)
         return AuthRepository.getInstance(apiService, mUserPreference)
-    }
-
-    fun provideHotelRepository(context: Context): HotelRepository {
-        val apiService = ApiConfig.getApiService(context)
-        val mUserPreference = UserPreference(context)
-        return HotelRepository.getInstance(apiService, mUserPreference)
     }
 
 }

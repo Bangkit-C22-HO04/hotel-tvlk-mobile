@@ -20,28 +20,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.traveloka.hotel.R
 import com.traveloka.hotel.component.WithLocation
-import com.traveloka.hotel.featureHotel.data.model.HotelListRequest
-import com.traveloka.hotel.featureHotel.domain.HotelViewModel
 import com.traveloka.hotel.featureHotel.util.TRAVEL_PURPOSE_OPTIONS
 import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.BlueDark
 import com.traveloka.hotel.ui.theme.Orange
 
 @Composable
-fun FilterBox(viewModel: HotelViewModel) {
-
-    val location = viewModel.location
-    val travelPurpose = viewModel.travelPurpose
-
-    val handleSearchHotel = {
-        viewModel.getHotelList(
-            HotelListRequest(
-                location = location.value,
-                travelPurpose = travelPurpose.value
-            )
-        )
-    }
-
+fun FilterBox() {
     Card(
         modifier = Modifier
             .fillMaxWidth(),
@@ -53,7 +38,7 @@ fun FilterBox(viewModel: HotelViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Box(modifier = Modifier.weight(1F)) {
-                    DestinationField(viewModel)
+                    DestinationField()
                 }
                 WithLocation { getLocation ->
 
@@ -76,11 +61,11 @@ fun FilterBox(viewModel: HotelViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Box(modifier = Modifier.weight(2F)) {
-                    TravelPurposeField(viewModel)
+                    TravelPurposeField()
                 }
                 Button(
                     modifier = Modifier.weight(1F),
-                    onClick = handleSearchHotel,
+                    onClick = {},
                     colors = ButtonDefaults.buttonColors(backgroundColor = Orange)
                 ) {
                     Text(
@@ -96,13 +81,12 @@ fun FilterBox(viewModel: HotelViewModel) {
 }
 
 @Composable
-fun DestinationField(viewModel: HotelViewModel) {
-    val location = viewModel.location
-
+fun DestinationField() {
+    var inputText by remember { mutableStateOf("") }
     TextField(
         modifier = Modifier.fillMaxWidth(),
-        value = location.value,
-        onValueChange = { viewModel.setLocation(it) },
+        value = inputText,
+        onValueChange = { inputText = it },
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
         ),
@@ -118,10 +102,10 @@ fun DestinationField(viewModel: HotelViewModel) {
 }
 
 @Composable
-fun TravelPurposeField(viewModel: HotelViewModel) {
+fun TravelPurposeField() {
     var expanded by remember { mutableStateOf(false) }
     val suggestions = TRAVEL_PURPOSE_OPTIONS.map { stringResource(id = it) }
-    val travelPurpose = viewModel.travelPurpose
+    var selectedText by remember { mutableStateOf("") }
 
     var textFieldSize by remember { mutableStateOf(Size.Zero) }
 
@@ -135,11 +119,12 @@ fun TravelPurposeField(viewModel: HotelViewModel) {
             singleLine = true,
             modifier = Modifier
                 .onGloballyPositioned { coordinates ->
+                    //This value is used to assign to the DropDown the same width
                     textFieldSize = coordinates.size.toSize()
                 }
                 .clickable { expanded = !expanded },
-            value = travelPurpose.value,
-            onValueChange = { viewModel.setTravelPurpose(it) },
+            value = selectedText,
+            onValueChange = { selectedText = it },
             colors = TextFieldDefaults.textFieldColors(
                 backgroundColor = Color.Transparent,
                 disabledTextColor = LocalContentColor.current.copy(LocalContentAlpha.current)
@@ -167,7 +152,7 @@ fun TravelPurposeField(viewModel: HotelViewModel) {
         ) {
             suggestions.forEach { label ->
                 DropdownMenuItem(onClick = {
-                    viewModel.setTravelPurpose(label)
+                    selectedText = label
                 }) {
                     Text(text = label, style = MaterialTheme.typography.body2)
                 }
