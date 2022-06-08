@@ -2,6 +2,7 @@ package com.traveloka.hotel.core.network
 
 import com.traveloka.hotel.featureAuth.data.model.login.LoginResponse
 import com.traveloka.hotel.featureAuth.data.model.register.RegisterResponse
+import com.traveloka.hotel.featureHotel.data.model.HotelDetailResponse
 import com.traveloka.hotel.featureHotel.data.model.HotelListResponse
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -17,4 +18,7 @@ interface ApiService {
 
     @POST(ApiConstants.HOTEL_RANKING)
     fun getHotelRanking(@Body request: RequestBody): Call<HotelListResponse>
+
+    @POST(ApiConstants.HOTEL_DETAIL)
+    fun getHotelDetail(@Body request: RequestBody): Call<HotelDetailResponse>
 }

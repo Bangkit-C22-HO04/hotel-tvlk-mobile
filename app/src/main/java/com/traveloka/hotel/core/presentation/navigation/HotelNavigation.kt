@@ -35,9 +35,9 @@ fun HotelNavigation() {
         }
         composable(
             HotelScreens.DetailsScreen.name + "/{hotelId}",
-            arguments = listOf(navArgument("hotelId") { type = NavType.StringType })
+            arguments = listOf(navArgument("hotelId") { type = NavType.LongType })
         ) { backStackEntry ->
-            DetailHotelScreen(navController, backStackEntry.arguments?.getString("hotelId"))
+            DetailHotelScreen(navController, backStackEntry.arguments?.getLong("hotelId"))
         }
 
 
