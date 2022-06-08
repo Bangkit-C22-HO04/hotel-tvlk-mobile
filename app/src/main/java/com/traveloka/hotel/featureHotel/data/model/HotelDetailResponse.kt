@@ -17,7 +17,7 @@ data class Data(
     val imageUrl: String? = null,
 
     @field:SerializedName("ratings")
-    val ratings: List<RatingsItem>? = listOf(),
+    val ratings: List<RatingsItem>? = null,
 
     @field:SerializedName("name")
     val name: String? = null,

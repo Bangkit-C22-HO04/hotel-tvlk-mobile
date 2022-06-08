@@ -32,9 +32,7 @@ import com.traveloka.hotel.core.data.ResultApi
 import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureHotel.data.model.Data
-import com.traveloka.hotel.featureHotel.data.model.Hotel
 import com.traveloka.hotel.featureHotel.data.model.HotelDetailRequest
-import com.traveloka.hotel.featureHotel.data.model.HotelDetailResponse
 import com.traveloka.hotel.featureHotel.domain.HotelDetailViewModel
 import com.traveloka.hotel.featureHotel.domain.HotelDetailViewModelFactory
 import com.traveloka.hotel.featureHotel.presentation.detailHotel.components.Content
@@ -121,7 +119,7 @@ fun HotelDetail(
                         color = GreyLight,
                         thickness = 1.dp
                     )
-                    Reviews()
+                    Reviews(hotel.value.ratings?.get(0))
                 }
             }
 

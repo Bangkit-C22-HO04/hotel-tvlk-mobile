@@ -20,13 +20,13 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.traveloka.hotel.component.chip.MChip
+import com.traveloka.hotel.featureHotel.data.model.RatingsItem
 import com.traveloka.hotel.featureReview.util.getReviews
 import com.traveloka.hotel.ui.theme.*
 import java.text.SimpleDateFormat
 
 @Composable
-fun Reviews() {
-    val reviews = getReviews()[0]
+fun Reviews(reviews: RatingsItem?) {
     Column(
         modifier = Modifier
             .padding(horizontal = 8.dp)
@@ -58,7 +58,7 @@ fun Reviews() {
                         contentDescription = ""
                     )
                     Text(
-                        text = reviews.name,
+                        text = reviews?.name.toString(),
                         style = MaterialTheme.typography.body2
                     )
                 }
@@ -80,7 +80,7 @@ fun Reviews() {
                                         color = YellowStar
                                     )
                                 ) {
-                                    append(reviews.rating.toString())
+                                    append(reviews?.rating.toString())
                                 }
                                 append(" / 10")
                             },
@@ -88,32 +88,19 @@ fun Reviews() {
                             color = GreyLine
                         )
                     }
-                    Text(
-                        text = SimpleDateFormat("dd MMMM yyyy").format(reviews.date),
-                        style = MaterialTheme.typography.subtitle2,
-                        color = GreyLine
-                    )
                 }
                 MChip(
-                    reviews.tag,
+                    reviews?.travelPurposes.toString(),
                     BlueChip,
                     Blue,
                     Modifier.padding(vertical = 3.dp, horizontal = 4.dp),
                     MaterialTheme.typography.caption
                 )
                 Text(
-                    text = reviews.content,
+                    text = reviews?.content.toString(),
                     style = MaterialTheme.typography.body2
                 )
             }
         }
-    }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun ReviewsPreview() {
-    HotelmobileTheme {
-        Reviews()
     }
 }

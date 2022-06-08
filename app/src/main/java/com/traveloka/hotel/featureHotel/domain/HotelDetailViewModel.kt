@@ -31,7 +31,6 @@ class HotelDetailViewModel(private val hotelDetailRepository: HotelDetailReposit
             ) {
                 _hotelDetailState.value = if (response.isSuccessful) {
                     val data = response.body()
-                    Log.d("HotelDetail", "onResponse: ${data?.data?.name}")
                     ResultApi.Success(data)
                 } else {
                     val errorMessage = NetworkUtils.getErrorMessage()
