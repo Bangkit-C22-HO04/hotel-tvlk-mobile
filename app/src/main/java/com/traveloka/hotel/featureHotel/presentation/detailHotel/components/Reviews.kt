@@ -17,16 +17,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.traveloka.hotel.component.chip.MChip
+import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 import com.traveloka.hotel.featureHotel.data.model.RatingsItem
-import com.traveloka.hotel.featureReview.util.getReviews
 import com.traveloka.hotel.ui.theme.*
-import java.text.SimpleDateFormat
 
 @Composable
-fun Reviews(reviews: RatingsItem?) {
+fun Reviews(navController: NavController, ratingList: List<RatingsItem>?) {
+    val reviews = ratingList?.get(0)
     Column(
         modifier = Modifier
             .padding(horizontal = 8.dp)
@@ -42,7 +42,9 @@ fun Reviews(reviews: RatingsItem?) {
                 text = "More",
                 style = MaterialTheme.typography.body2,
                 color = GreyLine,
-                modifier = Modifier.clickable { })
+                modifier = Modifier.clickable {
+                    navController.navigate(HotelScreens.ListReviewScreen.name)
+                })
         }
         Card(shape = RoundedCornerShape(8.dp), elevation = 0.dp) {
             Column(

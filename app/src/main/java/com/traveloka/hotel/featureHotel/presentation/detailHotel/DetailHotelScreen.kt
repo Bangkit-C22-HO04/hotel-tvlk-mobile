@@ -1,6 +1,5 @@
 package com.traveloka.hotel.featureHotel.presentation.detailHotel
 
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -119,7 +118,7 @@ fun HotelDetail(
                         color = GreyLight,
                         thickness = 1.dp
                     )
-                    Reviews(hotel.value.ratings?.get(0))
+                    Reviews(navController, hotel.value.ratings)
                 }
             }
 
