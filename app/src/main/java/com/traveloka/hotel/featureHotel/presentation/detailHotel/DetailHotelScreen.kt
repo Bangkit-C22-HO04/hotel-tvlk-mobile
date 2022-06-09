@@ -33,7 +33,7 @@ import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureHotel.data.model.Data
 import com.traveloka.hotel.featureHotel.data.model.HotelDetailRequest
 import com.traveloka.hotel.featureHotel.domain.HotelDetailViewModel
-import com.traveloka.hotel.featureHotel.domain.HotelDetailViewModelFactory
+import com.traveloka.hotel.featureHotel.domain.HotelViewModelFactory
 import com.traveloka.hotel.featureHotel.presentation.detailHotel.components.Content
 import com.traveloka.hotel.featureHotel.presentation.detailHotel.components.Reviews
 import com.traveloka.hotel.ui.theme.GreyLight
@@ -53,7 +53,7 @@ fun HotelDetail(
     navController: NavController,
     hotelId: Long,
     viewModel: HotelDetailViewModel = viewModel(
-        factory = HotelDetailViewModelFactory.getInstance(
+        factory = HotelViewModelFactory.getInstance(
             LocalContext.current
         )
     )
