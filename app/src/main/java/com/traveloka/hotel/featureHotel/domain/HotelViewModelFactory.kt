@@ -13,6 +13,8 @@ class HotelViewModelFactory private constructor(private val hotelRepository: Hot
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HotelViewModel::class.java)) {
             return HotelViewModel(hotelRepository) as T
+        } else if (modelClass.isAssignableFrom(HotelDetailViewModel::class.java)) {
+            return HotelDetailViewModel(hotelRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

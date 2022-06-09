@@ -11,7 +11,7 @@ object NetworkUtils {
         return jsonObj.getString("message")
     }
 
-    fun createJsonRequestBody(vararg params: Pair<String, String>) =
+    fun createJsonRequestBody(vararg params: Pair<String, Any>) =
         JSONObject(mapOf(*params)).toString()
             .toRequestBody("application/json; charset=utf-8".toMediaType())
 }

@@ -5,4 +5,5 @@ object ApiConstants {
     const val LOGIN = "login"
     const val REGISTER = "register"
     const val HOTEL_RANKING = "get-ranking"
+    const val HOTEL_DETAIL = "get-hotel"
 }

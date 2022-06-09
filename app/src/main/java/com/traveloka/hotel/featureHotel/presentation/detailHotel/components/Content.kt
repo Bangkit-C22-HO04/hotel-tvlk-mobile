@@ -14,25 +14,23 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.traveloka.hotel.component.chip.MChip
-import com.traveloka.hotel.featureHotel.data.model.Hotel
-import com.traveloka.hotel.featureHotel.util.getHotels
+import com.traveloka.hotel.featureHotel.data.model.Data
 import com.traveloka.hotel.ui.theme.*
 
 @Composable
-fun Content(hotel: Hotel) {
+fun Content(hotel: Data) {
     Column(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 16.dp)
             .fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(text = hotel.name, style = MaterialTheme.typography.h6)
+        Text(text = hotel.name.toString(), style = MaterialTheme.typography.h6)
         MChip(
-            hotel.type,
+            hotel.type.toString(),
             OrangeChip,
             Orange,
             Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
@@ -53,7 +51,7 @@ fun Content(hotel: Hotel) {
                     tint = GreyLine
                 )
                 Text(
-                    text = hotel.location,
+                    text = hotel.location.toString(),
                     style = MaterialTheme.typography.body2,
                     color = Grey,
                 )
@@ -75,7 +73,7 @@ fun Content(hotel: Hotel) {
                                 fontWeight = FontWeight.Bold
                             )
                         ) {
-                            append(hotel.rating.toString())
+                            append(hotel.totalRating.toString())
                         }
                         append(" (${hotel.totalReview} reviews)")
                     },
@@ -102,13 +100,5 @@ fun Content(hotel: Hotel) {
                 fontWeight = FontWeight.Bold
             )
         }
-    }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun ContentPreview() {
-    HotelmobileTheme {
-        Content(getHotels()[0])
     }
 }
