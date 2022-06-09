@@ -7,6 +7,7 @@ import okhttp3.RequestBody
 class HotelRepository(private val apiService: ApiService, private val preference: IUserPreference) {
 
     fun getHotelList(request: RequestBody) = apiService.getHotelRanking(request)
+    fun getHotelDetail(request: RequestBody) = apiService.getHotelDetail(request)
 
     companion object {
         @Volatile
