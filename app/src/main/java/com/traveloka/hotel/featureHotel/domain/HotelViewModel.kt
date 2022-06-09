@@ -48,7 +48,7 @@ class HotelViewModel(private val repository: HotelRepository) : ViewModel() {
                     val data = response.body()!!
                     ResultApi.Success(data)
                 } else {
-                    val errorMessage = NetworkUtils.getErrorMessage()
+                    val errorMessage = NetworkUtils.getErrorMessage(response.errorBody()?.string())
                     ResultApi.Failure(errorMessage)
                 }
             }

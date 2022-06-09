@@ -58,9 +58,9 @@ fun HotelList(
         when (val state = hotelListState.value) {
             is ResultApi.Loading -> {
                 isLoading.value = true
+                hotelList.clear()
             }
             is ResultApi.Success -> {
-                hotelList.clear()
                 isLoading.value = false
                 val resultHotels = state.data?.data ?: emptyList()
                 hotelList.addAll(resultHotels)

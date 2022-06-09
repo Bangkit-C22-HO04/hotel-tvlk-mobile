@@ -2,10 +2,13 @@ package com.traveloka.hotel.component.form
 
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.autofill.AutofillType
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun EmailField(
     modifier: Modifier = Modifier,
@@ -24,7 +27,8 @@ fun EmailField(
         title = title,
         keyboardType = KeyboardType.Email,
         imeAction = imeAction,
-        keyboardActions = keyboardActions
+        keyboardActions = keyboardActions,
+        autofillTypes = listOf(AutofillType.EmailAddress)
     )
 
 }
