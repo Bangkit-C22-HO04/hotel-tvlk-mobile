@@ -32,7 +32,7 @@ class HotelDetailViewModel(private val hotelRepository: HotelRepository) : ViewM
                     val data = response.body()
                     ResultApi.Success(data)
                 } else {
-                    val errorMessage = NetworkUtils.getErrorMessage()
+                    val errorMessage = NetworkUtils.getErrorMessage(null)
                     ResultApi.Failure(errorMessage)
                 }
             }

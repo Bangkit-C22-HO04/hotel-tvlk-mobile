@@ -79,7 +79,7 @@ class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
                     ResultApi.Success(message)
                 } else {
                     val errorMessage =
-                        NetworkUtils.getErrorMessage(response.errorBody()?.string())
+                        NetworkUtils.getErrorMessage(response.body()?.message)
                     ResultApi.Failure(errorMessage)
                 }
             }
