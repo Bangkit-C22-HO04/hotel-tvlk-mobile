@@ -9,7 +9,10 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,7 +31,6 @@ import coil.request.ImageRequest
 import com.traveloka.hotel.R
 import com.traveloka.hotel.component.WrapperFunc.WithAuth
 import com.traveloka.hotel.core.data.ResultApi
-import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureHotel.data.model.Data
 import com.traveloka.hotel.featureHotel.data.model.HotelDetailRequest
@@ -124,7 +126,7 @@ fun HotelDetail(
 
             IconButton(
                 modifier = Modifier.padding(start = 16.dp, top = 8.dp),
-                onClick = { navController.navigate(HotelScreens.ListHotelScreen.name) }) {
+                onClick = { navController.popBackStack() }) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     tint = Color.White,

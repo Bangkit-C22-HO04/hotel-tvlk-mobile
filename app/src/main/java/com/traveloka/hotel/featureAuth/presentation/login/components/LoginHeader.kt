@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
-import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 import com.traveloka.hotel.featureAuth.presentation.login.LoginScreen
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 
@@ -33,7 +32,7 @@ fun LoginHeader(navController: NavController) {
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = { navController.navigate(HotelScreens.IntroScreen.name) }) {
+        IconButton(onClick = { navController.popBackStack() }) {
             Icon(
                 imageVector = Icons.Default.ArrowBack,
                 tint = Color.White,
