@@ -101,7 +101,9 @@ fun DestinationField(viewModel: HotelViewModel) {
     val city = viewModel.city
 
     LaunchedEffect(true) {
-        viewModel.setCity(viewModel.getCity() ?: "")
+        if (city.value.isBlank()) {
+            viewModel.setCity(viewModel.getCity() ?: "")
+        }
     }
 
     TextField(
@@ -136,7 +138,9 @@ fun TravelPurposeField(viewModel: HotelViewModel) {
         Icons.Filled.ArrowDropDown
 
     LaunchedEffect(true) {
-        viewModel.setTravelPurpose(suggestions.first())
+        if (travelPurpose.value.isBlank()) {
+            viewModel.setTravelPurpose(suggestions.first())
+        }
     }
 
     Box {
