@@ -1,13 +1,11 @@
 package com.traveloka.hotel.core.data
 
-import com.google.android.gms.maps.model.LatLng
 import com.traveloka.hotel.core.data.local.IUserPreference
 
 class MainRepository(private val userPreference: IUserPreference) {
-    fun setLocation(location: LatLng) = userPreference.setLocation(location)
-    fun getLocation() = userPreference.getLocation()
     fun getToken() = userPreference.fetchAuthToken()
     fun setToken(token: String) = userPreference.saveAuthToken(token)
+    fun setCity(city: String) = userPreference.setCityName(city)
 
     companion object {
         @Volatile

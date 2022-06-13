@@ -3,6 +3,8 @@ package com.traveloka.hotel.component
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import android.util.Log
 import android.widget.Toast
@@ -14,9 +16,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.model.LatLng
 import com.traveloka.hotel.core.domain.MainViewModel
 import com.traveloka.hotel.core.domain.MainViewModelFactory
+import java.util.*
+
 
 fun checkPermission(context: Context, permission: String): Boolean {
     return ContextCompat.checkSelfPermission(
@@ -53,7 +56,11 @@ fun WithLocation(
             ) {
                 fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                     if (location != null) {
-                        mainViewModel.setLocation(LatLng(location.latitude, location.longitude))
+                        val geocoder = Geocoder(context, Locale.getDefault())
+                        val addresses: List<Address> =
+                            geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                        val cityName: String = addresses[0].subAdminArea
+                        mainViewModel.setCity(cityName)
                     } else {
                         Log.d("Exception", "failed to get location")
                     }

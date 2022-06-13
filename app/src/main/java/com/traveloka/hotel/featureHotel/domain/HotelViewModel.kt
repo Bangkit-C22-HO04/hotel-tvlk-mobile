@@ -14,11 +14,12 @@ import retrofit2.Response
 
 class HotelViewModel(private val repository: HotelRepository) : ViewModel() {
 
-    private val _location = mutableStateOf("")
-    val location: State<String> = _location
 
-    fun setLocation(newLocation: String) {
-        _location.value = newLocation
+    private val _city = mutableStateOf("")
+    val city: State<String> = _city
+
+    fun setCity(city: String) {
+        _city.value = city
     }
 
     private val _travelPurpose = mutableStateOf("")
@@ -59,4 +60,6 @@ class HotelViewModel(private val repository: HotelRepository) : ViewModel() {
 
         })
     }
+
+    fun getCity() = repository.getCityName()
 }

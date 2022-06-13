@@ -17,7 +17,7 @@ class AuthRepository(private val apiService: ApiService, private val preference:
         preference.saveEmail("")
         preference.savePassword("")
         preference.saveAuthToken("")
-        preference.setLocation(null)
+        preference.setCityName("")
     }
 
     companion object {

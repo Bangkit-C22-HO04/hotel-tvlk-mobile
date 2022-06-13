@@ -34,7 +34,7 @@ fun HotelList(
 ) {
     val context = LocalContext.current
     val hotelListState = viewModel.hotelListState
-    val location = viewModel.location
+    val city = viewModel.city
     val travelPurpose = viewModel.travelPurpose
 
 
@@ -48,7 +48,7 @@ fun HotelList(
     LaunchedEffect(true) {
         viewModel.getHotelList(
             HotelListRequest(
-                location = location.value,
+                location = city.value,
                 travelPurpose = travelPurpose.value
             )
         )

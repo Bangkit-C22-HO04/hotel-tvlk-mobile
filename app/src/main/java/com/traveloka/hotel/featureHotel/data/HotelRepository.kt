@@ -8,6 +8,7 @@ class HotelRepository(private val apiService: ApiService, private val preference
 
     fun getHotelList(request: RequestBody) = apiService.getHotelRanking(request)
     fun getHotelDetail(request: RequestBody) = apiService.getHotelDetail(request)
+    fun getCityName() = preference.getCityName()
 
     companion object {
         @Volatile

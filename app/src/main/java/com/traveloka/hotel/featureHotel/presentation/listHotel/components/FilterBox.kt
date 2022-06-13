@@ -30,13 +30,13 @@ import com.traveloka.hotel.ui.theme.Orange
 @Composable
 fun FilterBox(viewModel: HotelViewModel) {
 
-    val location = viewModel.location
+    val city = viewModel.city
     val travelPurpose = viewModel.travelPurpose
 
     val handleSearchHotel = {
         viewModel.getHotelList(
             HotelListRequest(
-                location = location.value,
+                location = city.value,
                 travelPurpose = travelPurpose.value
             )
         )
@@ -61,7 +61,7 @@ fun FilterBox(viewModel: HotelViewModel) {
                         modifier = Modifier
                             .clip(CircleShape)
                             .background(Blue),
-                        onClick = { getLocation() }) {
+                        onClick = { getLocation(); viewModel.setCity(viewModel.getCity() ?: "") }) {
                         Icon(
                             modifier = Modifier.size(28.dp),
                             imageVector = Icons.Default.GpsFixed,
@@ -97,12 +97,17 @@ fun FilterBox(viewModel: HotelViewModel) {
 
 @Composable
 fun DestinationField(viewModel: HotelViewModel) {
-    val location = viewModel.location
+
+    val city = viewModel.city
+
+    LaunchedEffect(true) {
+        viewModel.setCity(viewModel.getCity() ?: "")
+    }
 
     TextField(
         modifier = Modifier.fillMaxWidth(),
-        value = location.value,
-        onValueChange = { viewModel.setLocation(it) },
+        value = city.value,
+        onValueChange = { viewModel.setCity(it) },
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,
         ),
@@ -129,6 +134,10 @@ fun TravelPurposeField(viewModel: HotelViewModel) {
         Icons.Filled.ArrowDropUp
     else
         Icons.Filled.ArrowDropDown
+
+    LaunchedEffect(true) {
+        viewModel.setTravelPurpose(suggestions.first())
+    }
 
     Box {
         TextField(
