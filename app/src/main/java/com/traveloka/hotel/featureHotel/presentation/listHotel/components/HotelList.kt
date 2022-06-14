@@ -3,6 +3,7 @@ package com.traveloka.hotel.featureHotel.presentation.listHotel.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -34,6 +35,8 @@ fun HotelList(
     val city = viewModel.city
     val travelPurpose = viewModel.travelPurpose
     val scope = rememberCoroutineScope()
+    val listState = rememberLazyListState()
+
 
     val hotelList = remember {
         mutableStateListOf<Hotel>()
@@ -92,7 +95,7 @@ fun HotelList(
                 Icon(imageVector = Icons.Default.Apartment, contentDescription = "")
             }
 
-            LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            LazyColumn(state = listState, verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(hotelList, key = { it.id }) { hotel ->
                     HotelItem(hotel = hotel, navController = navController)
                 }
