@@ -13,11 +13,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
 import com.traveloka.hotel.component.button.MButton
 import com.traveloka.hotel.component.form.EmailField
@@ -28,8 +26,6 @@ import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureAuth.data.model.login.LoginRequest
 import com.traveloka.hotel.featureAuth.domain.AuthViewModel
 import com.traveloka.hotel.featureAuth.domain.AuthViewModelFactory
-import com.traveloka.hotel.featureAuth.presentation.login.LoginScreen
-import com.traveloka.hotel.ui.theme.HotelmobileTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -123,13 +119,5 @@ fun LoginForm(
             text = stringResource(R.string.log_in),
             onClick = handleLogin
         )
-    }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun LoginFormPreview() {
-    HotelmobileTheme {
-        LoginScreen(rememberNavController())
     }
 }

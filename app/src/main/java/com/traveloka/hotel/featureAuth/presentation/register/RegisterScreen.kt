@@ -7,16 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.component.WithLocation
 import com.traveloka.hotel.component.WrapperFunc.WithNonAuth
 import com.traveloka.hotel.featureAuth.presentation.register.components.RegisterBody
 import com.traveloka.hotel.featureAuth.presentation.register.components.RegisterHeader
 import com.traveloka.hotel.ui.theme.BlueBg
-import com.traveloka.hotel.ui.theme.HotelmobileTheme
 
 
 @Composable
@@ -47,14 +44,5 @@ fun RegisterScreen(
                 }
             }
         }
-    }
-}
-
-
-@Preview(showSystemUi = true)
-@Composable
-fun Preview() {
-    HotelmobileTheme {
-        RegisterScreen(rememberNavController())
     }
 }

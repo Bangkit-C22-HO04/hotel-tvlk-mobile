@@ -15,17 +15,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.core.data.ResultApi
 import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureHotel.data.model.Hotel
 import com.traveloka.hotel.featureHotel.data.model.HotelListRequest
 import com.traveloka.hotel.featureHotel.domain.HotelViewModel
-import com.traveloka.hotel.featureHotel.presentation.listHotel.ListHotelScreen
-import com.traveloka.hotel.ui.theme.HotelmobileTheme
+import kotlinx.coroutines.launch
 
 @Composable
 fun HotelList(
@@ -36,7 +33,7 @@ fun HotelList(
     val hotelListState = viewModel.hotelListState
     val city = viewModel.city
     val travelPurpose = viewModel.travelPurpose
-
+    val scope = rememberCoroutineScope()
 
     val hotelList = remember {
         mutableStateListOf<Hotel>()
@@ -46,12 +43,14 @@ fun HotelList(
     }
 
     LaunchedEffect(true) {
-        viewModel.getHotelList(
-            HotelListRequest(
-                location = city.value,
-                travelPurpose = travelPurpose.value
+        scope.launch {
+            viewModel.getHotelList(
+                HotelListRequest(
+                    location = city.value,
+                    travelPurpose = travelPurpose.value
+                )
             )
-        )
+        }
     }
 
     LaunchedEffect(hotelListState.value) {
@@ -99,14 +98,5 @@ fun HotelList(
                 }
             }
         }
-    }
-}
-
-
-@Preview(showSystemUi = true)
-@Composable
-fun ListHotelScreenPreview() {
-    HotelmobileTheme {
-        ListHotelScreen(rememberNavController())
     }
 }
