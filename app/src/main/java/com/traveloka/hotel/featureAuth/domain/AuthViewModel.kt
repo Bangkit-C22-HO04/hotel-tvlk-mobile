@@ -10,16 +10,20 @@ import com.traveloka.hotel.featureAuth.data.model.login.LoginRequest
 import com.traveloka.hotel.featureAuth.data.model.login.LoginResponse
 import com.traveloka.hotel.featureAuth.data.model.register.RegisterRequest
 import com.traveloka.hotel.featureAuth.data.model.register.RegisterResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
-    private val _email = mutableStateOf(authRepository.getEmail() ?: "")
+@HiltViewModel
+class AuthViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
+
+    private val _email = mutableStateOf("")
     val email: State<String> = _email
 
-    private val _password = mutableStateOf(authRepository.getPassword() ?: "")
+    private val _password = mutableStateOf("")
     val password: State<String> = _password
 
     private val _birthDate = mutableStateOf("")
@@ -74,12 +78,10 @@ class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
             ) {
                 _registerState.value = if (response.isSuccessful) {
                     val message = response.body()!!.message
-                    authRepository.setEmail(request.email)
-                    authRepository.setPassword(request.password)
                     ResultApi.Success(message)
                 } else {
                     val errorMessage =
-                        NetworkUtils.getErrorMessage(response.body()?.message)
+                        NetworkUtils.getErrorMessage(response.errorBody()?.string() ?: "")
                     ResultApi.Failure(errorMessage)
                 }
             }

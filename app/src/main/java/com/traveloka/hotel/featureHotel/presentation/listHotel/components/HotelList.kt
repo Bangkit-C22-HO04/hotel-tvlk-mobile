@@ -23,6 +23,7 @@ import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureHotel.data.model.Hotel
 import com.traveloka.hotel.featureHotel.data.model.HotelListRequest
 import com.traveloka.hotel.featureHotel.domain.HotelViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Composable
@@ -46,7 +47,7 @@ fun HotelList(
     }
 
     LaunchedEffect(true) {
-        scope.launch {
+        scope.launch(Dispatchers.IO) {
             viewModel.getHotelList(
                 HotelListRequest(
                     location = city.value,
@@ -57,22 +58,24 @@ fun HotelList(
     }
 
     LaunchedEffect(hotelListState.value) {
-        when (val state = hotelListState.value) {
-            is ResultApi.Loading -> {
-                isLoading.value = true
-                hotelList.clear()
+        scope.launch(Dispatchers.IO) {
+            when (val state = hotelListState.value) {
+                is ResultApi.Loading -> {
+                    isLoading.value = true
+                    hotelList.clear()
+                }
+                is ResultApi.Success -> {
+                    isLoading.value = false
+                    val resultHotels = state.data?.data ?: emptyList()
+                    hotelList.addAll(resultHotels)
+                }
+                is ResultApi.Failure -> {
+                    isLoading.value = false
+                    showToast(context, state.error)
+                    hotelList.addAll(emptyList())
+                }
+                else -> {}
             }
-            is ResultApi.Success -> {
-                isLoading.value = false
-                val resultHotels = state.data?.data ?: emptyList()
-                hotelList.addAll(resultHotels)
-            }
-            is ResultApi.Failure -> {
-                isLoading.value = false
-                showToast(context, state.error)
-                hotelList.addAll(emptyList())
-            }
-            else -> {}
         }
     }
 

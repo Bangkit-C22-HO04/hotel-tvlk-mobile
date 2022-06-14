@@ -19,7 +19,6 @@ import com.traveloka.hotel.ui.theme.BlueBg
 @Composable
 fun RegisterScreen(
     navController: NavController
-
 ) {
     WithNonAuth(navController = navController) {
         WithLocation {

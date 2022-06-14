@@ -84,7 +84,7 @@ fun IntroScreen(
                 text = "Let’s Start!",
                 bgColor = Color.White,
                 textColor = Blue,
-                onClick = { navController.navigate(HotelScreens.LoginScreen.name) })
+                onClick = { navController.navigate(HotelScreens.RegisterScreen.name) })
         }
     }
 }

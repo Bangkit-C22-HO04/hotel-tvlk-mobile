@@ -19,7 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -30,10 +30,10 @@ import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureHotel.data.model.Data
 import com.traveloka.hotel.featureHotel.data.model.HotelDetailRequest
 import com.traveloka.hotel.featureHotel.domain.HotelDetailViewModel
-import com.traveloka.hotel.featureHotel.domain.HotelViewModelFactory
 import com.traveloka.hotel.featureHotel.presentation.detailHotel.components.Content
 import com.traveloka.hotel.featureHotel.presentation.detailHotel.components.Reviews
 import com.traveloka.hotel.ui.theme.GreyLight
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Composable
@@ -49,11 +49,7 @@ fun DetailHotelScreen(navController: NavController, hotelId: Long?) {
 fun HotelDetail(
     navController: NavController,
     hotelId: Long,
-    viewModel: HotelDetailViewModel = viewModel(
-        factory = HotelViewModelFactory.getInstance(
-            LocalContext.current
-        )
-    )
+    viewModel: HotelDetailViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     val hotelDetailState = viewModel.hotelDetailState
@@ -67,28 +63,30 @@ fun HotelDetail(
     }
 
     LaunchedEffect(true) {
-        scope.launch {
+        scope.launch(Dispatchers.IO) {
             viewModel.getHotelDetail(HotelDetailRequest(hotelId))
         }
     }
 
     LaunchedEffect(hotelDetailState.value) {
-        when (val state = hotelDetailState.value) {
-            is ResultApi.Loading -> {
-                isLoading.value = true
-            }
-            is ResultApi.Success -> {
-                isLoading.value = false
-                val resultDetail = state.data
-                if (resultDetail != null) {
-                    hotel.value = resultDetail.data
+        scope.launch(Dispatchers.IO) {
+            when (val state = hotelDetailState.value) {
+                is ResultApi.Loading -> {
+                    isLoading.value = true
                 }
+                is ResultApi.Success -> {
+                    isLoading.value = false
+                    val resultDetail = state.data
+                    if (resultDetail != null) {
+                        hotel.value = resultDetail.data
+                    }
+                }
+                is ResultApi.Failure -> {
+                    isLoading.value = false
+                    showToast(context, state.error)
+                }
+                else -> {}
             }
-            is ResultApi.Failure -> {
-                isLoading.value = false
-                showToast(context, state.error)
-            }
-            else -> {}
         }
     }
 

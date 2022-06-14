@@ -2,9 +2,11 @@ package com.traveloka.hotel.core.domain
 
 import androidx.lifecycle.ViewModel
 import com.traveloka.hotel.core.data.MainRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-
-class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
 
 
     fun setCity(city: String) {

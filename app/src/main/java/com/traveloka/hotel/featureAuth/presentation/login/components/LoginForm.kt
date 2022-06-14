@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -14,7 +15,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.traveloka.hotel.R
 import com.traveloka.hotel.component.button.MButton
@@ -25,13 +26,13 @@ import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureAuth.data.model.login.LoginRequest
 import com.traveloka.hotel.featureAuth.domain.AuthViewModel
-import com.traveloka.hotel.featureAuth.domain.AuthViewModelFactory
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginForm(
     navController: NavController,
-    viewModel: AuthViewModel = viewModel(factory = AuthViewModelFactory.getInstance(LocalContext.current))
+    viewModel: AuthViewModel = hiltViewModel(navController.getBackStackEntry(HotelScreens.RegisterScreen.name))
+//    viewModel: AuthViewModel
 ) {
     val mContext = LocalContext.current
 
@@ -41,10 +42,10 @@ fun LoginForm(
 
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    var isSubmitEnabled by remember {
+    var isSubmitEnabled by rememberSaveable {
         mutableStateOf(true)
     }
-    var isLoading by remember {
+    var isLoading by rememberSaveable {
         mutableStateOf(false)
     }
     val handleLogin = {

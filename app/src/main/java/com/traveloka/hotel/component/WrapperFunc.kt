@@ -2,11 +2,9 @@ package com.traveloka.hotel.component
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.traveloka.hotel.core.domain.MainViewModel
-import com.traveloka.hotel.core.domain.MainViewModelFactory
 import com.traveloka.hotel.core.presentation.navigation.HotelScreens
 
 object WrapperFunc {
@@ -14,9 +12,7 @@ object WrapperFunc {
     @Composable
     fun WithAuth(
         navController: NavController,
-        viewModel: MainViewModel = viewModel(
-            factory = MainViewModelFactory.getInstance(LocalContext.current)
-        ),
+        viewModel: MainViewModel = hiltViewModel(),
         content: @Composable () -> Unit
     ) {
         val token = viewModel.getToken()
@@ -36,9 +32,7 @@ object WrapperFunc {
     @Composable
     fun WithNonAuth(
         navController: NavController,
-        viewModel: MainViewModel = viewModel(
-            factory = MainViewModelFactory.getInstance(LocalContext.current)
-        ),
+        viewModel: MainViewModel = hiltViewModel(),
         content: @Composable () -> Unit
     ) {
         val token = viewModel.getToken()
