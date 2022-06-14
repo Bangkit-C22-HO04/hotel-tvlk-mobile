@@ -65,13 +65,4 @@ class HotelViewModel @Inject constructor(private val repository: HotelRepository
     }
 
     fun getCity() = repository.getCityName()
-
-//    init {
-//        getHotelList(
-//            HotelListRequest(
-//                location = "bandung",
-//                travelPurpose = "Holiday"
-//            )
-//        )
-//    }
 }
