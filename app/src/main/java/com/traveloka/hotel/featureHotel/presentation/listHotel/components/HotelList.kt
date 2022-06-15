@@ -58,24 +58,22 @@ fun HotelList(
     }
 
     LaunchedEffect(hotelListState.value) {
-        scope.launch(Dispatchers.IO) {
-            when (val state = hotelListState.value) {
-                is ResultApi.Loading -> {
-                    isLoading.value = true
-                    hotelList.clear()
-                }
-                is ResultApi.Success -> {
-                    isLoading.value = false
-                    val resultHotels = state.data?.data ?: emptyList()
-                    hotelList.addAll(resultHotels)
-                }
-                is ResultApi.Failure -> {
-                    isLoading.value = false
-                    showToast(context, state.error)
-                    hotelList.addAll(emptyList())
-                }
-                else -> {}
+        when (val state = hotelListState.value) {
+            is ResultApi.Loading -> {
+                isLoading.value = true
+                hotelList.clear()
             }
+            is ResultApi.Success -> {
+                isLoading.value = false
+                val resultHotels = state.data?.data ?: emptyList()
+                hotelList.addAll(resultHotels)
+            }
+            is ResultApi.Failure -> {
+                isLoading.value = false
+                showToast(context, state.error)
+                hotelList.addAll(emptyList())
+            }
+            else -> {}
         }
     }
 

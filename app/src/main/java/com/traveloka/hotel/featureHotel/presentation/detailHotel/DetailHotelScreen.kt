@@ -69,24 +69,22 @@ fun HotelDetail(
     }
 
     LaunchedEffect(hotelDetailState.value) {
-        scope.launch(Dispatchers.IO) {
-            when (val state = hotelDetailState.value) {
-                is ResultApi.Loading -> {
-                    isLoading.value = true
-                }
-                is ResultApi.Success -> {
-                    isLoading.value = false
-                    val resultDetail = state.data
-                    if (resultDetail != null) {
-                        hotel.value = resultDetail.data
-                    }
-                }
-                is ResultApi.Failure -> {
-                    isLoading.value = false
-                    showToast(context, state.error)
-                }
-                else -> {}
+        when (val state = hotelDetailState.value) {
+            is ResultApi.Loading -> {
+                isLoading.value = true
             }
+            is ResultApi.Success -> {
+                isLoading.value = false
+                val resultDetail = state.data
+                if (resultDetail != null) {
+                    hotel.value = resultDetail.data
+                }
+            }
+            is ResultApi.Failure -> {
+                isLoading.value = false
+                showToast(context, state.error)
+            }
+            else -> {}
         }
     }
 
