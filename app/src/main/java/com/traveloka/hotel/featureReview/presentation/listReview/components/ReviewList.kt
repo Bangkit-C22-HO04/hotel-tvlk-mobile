@@ -7,17 +7,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import com.traveloka.hotel.featureHotel.data.model.Data
 import com.traveloka.hotel.featureReview.presentation.listReview.ListReviewScreen
-import com.traveloka.hotel.featureReview.util.getReviews
 import com.traveloka.hotel.ui.theme.HotelmobileTheme
 
 @Composable
-fun ReviewList() {
-    val reviews = getReviews()
+fun ReviewList(reviewListData: Data) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(reviews, key = { it.id }) { review ->
+        items(reviewListData.ratings!!, key = { it.id }) { review ->
             ReviewItem(review = review)
         }
     }
@@ -27,6 +26,6 @@ fun ReviewList() {
 @Composable
 fun ListReviewScreenPreview() {
     HotelmobileTheme {
-        ListReviewScreen(rememberNavController())
+        ListReviewScreen(rememberNavController(), 3000010039024)
     }
 }

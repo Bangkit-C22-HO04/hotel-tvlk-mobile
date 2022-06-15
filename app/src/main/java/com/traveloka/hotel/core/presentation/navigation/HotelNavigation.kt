@@ -30,8 +30,10 @@ fun HotelNavigation() {
         composable(HotelScreens.ListHotelScreen.name) {
             ListHotelScreen(navController)
         }
-        composable(HotelScreens.ListReviewScreen.name) {
-            ListReviewScreen(navController)
+        composable(HotelScreens.ListReviewScreen.name + "/{hotelId}",
+            arguments = listOf(navArgument("hotelId") { type = NavType.LongType })
+        ) { backStackEntry ->
+            ListReviewScreen(navController, backStackEntry.arguments?.getLong("hotelId"))
         }
         composable(
             HotelScreens.DetailsScreen.name + "/{hotelId}",
