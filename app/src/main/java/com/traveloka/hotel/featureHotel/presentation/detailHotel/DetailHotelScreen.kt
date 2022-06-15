@@ -116,7 +116,7 @@ fun HotelDetail(
                         color = GreyLight,
                         thickness = 1.dp
                     )
-                    Reviews(navController, hotel.value.ratings)
+                    Reviews(navController, hotel)
                 }
             }
 

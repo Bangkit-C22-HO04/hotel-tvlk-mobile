@@ -12,8 +12,6 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -21,15 +19,15 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.traveloka.hotel.featureReview.data.model.Review
+import com.traveloka.hotel.component.chip.MChip
+import com.traveloka.hotel.featureHotel.data.model.RatingsItem
 import com.traveloka.hotel.ui.theme.Blue
+import com.traveloka.hotel.ui.theme.BlueChip
 import com.traveloka.hotel.ui.theme.GreyLine
-import com.traveloka.hotel.ui.theme.LightBlue
 import com.traveloka.hotel.ui.theme.YellowStar
-import java.text.SimpleDateFormat
 
 @Composable
-fun ReviewItem(review: Review) {
+fun ReviewItem(review: RatingsItem) {
     Card(modifier = Modifier
         .fillMaxWidth()
         .clickable { }
@@ -95,26 +93,13 @@ fun ReviewItem(review: Review) {
                         }
                     )
                 }
-                Text(
-                    text = SimpleDateFormat("dd MMMM yyyy").format(review.date),
-                    style = MaterialTheme.typography.caption,
-                    color = GreyLine
-                )
             }
-            Text(
-                modifier = Modifier
-                    .drawBehind {
-                        drawRoundRect(
-                            color = LightBlue,
-                            cornerRadius = CornerRadius(
-                                x = 8.dp.toPx(),
-                                y = 8.dp.toPx()
-                            ),
-                        )
-                    },
-                text = review.tag,
-                style = MaterialTheme.typography.caption,
-                color = Blue
+            MChip(
+                review.travelPurposes,
+                BlueChip,
+                Blue,
+                Modifier.padding(vertical = 3.dp, horizontal = 4.dp),
+                MaterialTheme.typography.caption
             )
             Text(
                 text = review.content,
