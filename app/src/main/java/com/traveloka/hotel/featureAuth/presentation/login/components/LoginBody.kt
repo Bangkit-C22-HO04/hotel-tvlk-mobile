@@ -14,16 +14,12 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
 import com.traveloka.hotel.core.presentation.navigation.HotelScreens
-import com.traveloka.hotel.featureAuth.presentation.login.LoginScreen
 import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.Grey
-import com.traveloka.hotel.ui.theme.HotelmobileTheme
 
 @Composable
 fun LoginBody(navController: NavController) {
@@ -70,13 +66,5 @@ fun LoginBody(navController: NavController) {
                 .padding(vertical = 12.dp)
                 .clickable { navController.navigate(HotelScreens.RegisterScreen.name) }
         )
-    }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun LoginBodyPreview() {
-    HotelmobileTheme {
-        LoginScreen(rememberNavController())
     }
 }

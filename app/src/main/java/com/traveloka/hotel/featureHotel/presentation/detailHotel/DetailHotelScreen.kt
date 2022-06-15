@@ -9,10 +9,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,11 +18,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.traveloka.hotel.R
@@ -35,11 +30,11 @@ import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureHotel.data.model.Data
 import com.traveloka.hotel.featureHotel.data.model.HotelDetailRequest
 import com.traveloka.hotel.featureHotel.domain.HotelDetailViewModel
-import com.traveloka.hotel.featureHotel.domain.HotelViewModelFactory
 import com.traveloka.hotel.featureHotel.presentation.detailHotel.components.Content
 import com.traveloka.hotel.featureHotel.presentation.detailHotel.components.Reviews
 import com.traveloka.hotel.ui.theme.GreyLight
-import com.traveloka.hotel.ui.theme.HotelmobileTheme
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Composable
 fun DetailHotelScreen(navController: NavController, hotelId: Long?) {
@@ -54,14 +49,11 @@ fun DetailHotelScreen(navController: NavController, hotelId: Long?) {
 fun HotelDetail(
     navController: NavController,
     hotelId: Long,
-    viewModel: HotelDetailViewModel = viewModel(
-        factory = HotelViewModelFactory.getInstance(
-            LocalContext.current
-        )
-    )
+    viewModel: HotelDetailViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     val hotelDetailState = viewModel.hotelDetailState
+    val scope = rememberCoroutineScope()
 
     val hotel = remember {
         mutableStateOf(Data())
@@ -71,7 +63,9 @@ fun HotelDetail(
     }
 
     LaunchedEffect(true) {
-        viewModel.getHotelDetail(HotelDetailRequest(hotelId))
+        scope.launch(Dispatchers.IO) {
+            viewModel.getHotelDetail(HotelDetailRequest(hotelId))
+        }
     }
 
     LaunchedEffect(hotelDetailState.value) {
@@ -83,7 +77,7 @@ fun HotelDetail(
                 isLoading.value = false
                 val resultDetail = state.data
                 if (resultDetail != null) {
-                    hotel.value= resultDetail.data
+                    hotel.value = resultDetail.data
                 }
             }
             is ResultApi.Failure -> {
@@ -135,13 +129,5 @@ fun HotelDetail(
                 )
             }
         }
-    }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun ListHotelScreenPreview() {
-    HotelmobileTheme {
-        DetailHotelScreen(rememberNavController(), 3000010039024)
     }
 }

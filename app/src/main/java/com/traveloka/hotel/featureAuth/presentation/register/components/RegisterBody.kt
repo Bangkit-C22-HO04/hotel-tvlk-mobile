@@ -15,14 +15,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.traveloka.hotel.R
 import com.traveloka.hotel.core.presentation.navigation.HotelScreens
+import com.traveloka.hotel.featureAuth.domain.AuthViewModel
 import com.traveloka.hotel.ui.theme.Blue
 import com.traveloka.hotel.ui.theme.Grey
 
 @Composable
-fun RegisterBody(navController: NavController) {
+fun RegisterBody(
+    navController: NavController, viewModel: AuthViewModel = hiltViewModel(),
+) {
     Column(
         modifier = Modifier
             .padding(start = 24.dp, top = 28.dp, end = 24.dp)
@@ -42,7 +46,7 @@ fun RegisterBody(navController: NavController) {
         )
         Spacer(modifier = Modifier.height(25.dp))
 
-        RegisterForm(navController = navController)
+        RegisterForm(navController = navController, viewModel = viewModel)
 
         Text(
             text = buildAnnotatedString {
@@ -64,7 +68,10 @@ fun RegisterBody(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 12.dp)
-                .clickable { navController.navigate(HotelScreens.LoginScreen.name) }
+                .clickable {
+                    viewModel.clearForm()
+                    navController.navigate(HotelScreens.LoginScreen.name)
+                }
         )
     }
 }

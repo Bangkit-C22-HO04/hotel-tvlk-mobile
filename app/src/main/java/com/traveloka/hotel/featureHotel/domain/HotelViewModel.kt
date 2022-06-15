@@ -8,11 +8,14 @@ import com.traveloka.hotel.core.util.NetworkUtils
 import com.traveloka.hotel.featureHotel.data.HotelRepository
 import com.traveloka.hotel.featureHotel.data.model.HotelListRequest
 import com.traveloka.hotel.featureHotel.data.model.HotelListResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class HotelViewModel(private val repository: HotelRepository) : ViewModel() {
+@HiltViewModel
+class HotelViewModel @Inject constructor(private val repository: HotelRepository) : ViewModel() {
 
 
     private val _city = mutableStateOf("")

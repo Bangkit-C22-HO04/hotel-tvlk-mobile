@@ -10,14 +10,4 @@ class HotelRepository(private val apiService: ApiService, private val preference
     fun getHotelDetail(request: RequestBody) = apiService.getHotelDetail(request)
     fun getCityName() = preference.getCityName()
 
-    companion object {
-        @Volatile
-        private var instance: HotelRepository? = null
-
-        fun getInstance(
-            apiService: ApiService, preference: IUserPreference
-        ): HotelRepository = instance ?: synchronized(this) {
-            instance ?: HotelRepository(apiService, preference)
-        }.also { instance = it }
-    }
 }

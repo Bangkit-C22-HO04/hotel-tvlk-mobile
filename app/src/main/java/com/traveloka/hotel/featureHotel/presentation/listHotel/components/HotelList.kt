@@ -3,6 +3,7 @@ package com.traveloka.hotel.featureHotel.presentation.listHotel.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -15,17 +16,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.core.data.ResultApi
 import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureHotel.data.model.Hotel
 import com.traveloka.hotel.featureHotel.data.model.HotelListRequest
 import com.traveloka.hotel.featureHotel.domain.HotelViewModel
-import com.traveloka.hotel.featureHotel.presentation.listHotel.ListHotelScreen
-import com.traveloka.hotel.ui.theme.HotelmobileTheme
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Composable
 fun HotelList(
@@ -36,6 +35,8 @@ fun HotelList(
     val hotelListState = viewModel.hotelListState
     val city = viewModel.city
     val travelPurpose = viewModel.travelPurpose
+    val scope = rememberCoroutineScope()
+    val listState = rememberLazyListState()
 
 
     val hotelList = remember {
@@ -46,12 +47,14 @@ fun HotelList(
     }
 
     LaunchedEffect(true) {
-        viewModel.getHotelList(
-            HotelListRequest(
-                location = city.value,
-                travelPurpose = travelPurpose.value
+        scope.launch(Dispatchers.IO) {
+            viewModel.getHotelList(
+                HotelListRequest(
+                    location = city.value,
+                    travelPurpose = travelPurpose.value
+                )
             )
-        )
+        }
     }
 
     LaunchedEffect(hotelListState.value) {
@@ -93,20 +96,11 @@ fun HotelList(
                 Icon(imageVector = Icons.Default.Apartment, contentDescription = "")
             }
 
-            LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            LazyColumn(state = listState, verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(hotelList, key = { it.id }) { hotel ->
                     HotelItem(hotel = hotel, navController = navController)
                 }
             }
         }
-    }
-}
-
-
-@Preview(showSystemUi = true)
-@Composable
-fun ListHotelScreenPreview() {
-    HotelmobileTheme {
-        ListHotelScreen(rememberNavController())
     }
 }
