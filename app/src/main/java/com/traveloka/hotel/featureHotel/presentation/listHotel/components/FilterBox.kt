@@ -100,12 +100,6 @@ fun DestinationField(viewModel: HotelViewModel) {
 
     val city = viewModel.city
 
-    LaunchedEffect(true) {
-        if (city.value.isBlank()) {
-            viewModel.setCity(viewModel.getCity() ?: "")
-        }
-    }
-
     TextField(
         modifier = Modifier.fillMaxWidth(),
         value = city.value,
@@ -136,12 +130,6 @@ fun TravelPurposeField(viewModel: HotelViewModel) {
         Icons.Filled.ArrowDropUp
     else
         Icons.Filled.ArrowDropDown
-
-    LaunchedEffect(true) {
-        if (travelPurpose.value.isBlank()) {
-            viewModel.setTravelPurpose(suggestions.first())
-        }
-    }
 
     Box {
         TextField(

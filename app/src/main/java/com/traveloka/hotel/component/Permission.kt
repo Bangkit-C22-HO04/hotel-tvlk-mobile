@@ -8,7 +8,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.widget.Toast
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -18,7 +18,6 @@ import com.google.android.gms.location.LocationServices
 import com.traveloka.hotel.core.domain.MainViewModel
 import timber.log.Timber
 import java.util.*
-
 
 
 fun checkPermission(context: Context, permission: String): Boolean {
@@ -44,37 +43,36 @@ fun WithLocation(
     )
 
     val getCurrentLocation = {
-        if (locationPermissionsState.allPermissionsGranted) {
 
-            val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
 
-            if (
-                checkPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) &&
-                checkPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
-            ) {
-                fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-                    if (location != null) {
-                        val geocoder = Geocoder(context, Locale.getDefault())
-                        val addresses: List<Address> =
-                            geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                        val cityName: String = addresses[0].subAdminArea
-                        mainViewModel.setCity(cityName)
-                    } else {
-                        Timber.tag("Exception").d("failed to get location")
-                    }
+        if (
+            checkPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) &&
+            checkPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+        ) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                if (location != null) {
+                    val geocoder = Geocoder(context, Locale.getDefault())
+                    val addresses: List<Address> =
+                        geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                    val cityName: String = addresses[0].subAdminArea
+                    mainViewModel.setCity(cityName)
+                } else {
+                    Timber.tag("message-location").d("failed to get location")
                 }
             }
+        }
+
+    }
+
+    SideEffect {
+        if (locationPermissionsState.allPermissionsGranted) {
+            getCurrentLocation()
         } else {
             locationPermissionsState.launchMultiplePermissionRequest()
             Toast.makeText(context, "This feature requires location permission", Toast.LENGTH_SHORT)
                 .show()
         }
     }
-
-    LaunchedEffect(true) {
-        getCurrentLocation()
-    }
-
-
     content(getCurrentLocation)
 }

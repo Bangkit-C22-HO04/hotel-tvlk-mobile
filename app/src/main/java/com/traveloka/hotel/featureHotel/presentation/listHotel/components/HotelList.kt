@@ -15,6 +15,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -23,6 +24,7 @@ import com.traveloka.hotel.core.util.showToast
 import com.traveloka.hotel.featureHotel.data.model.Hotel
 import com.traveloka.hotel.featureHotel.data.model.HotelListRequest
 import com.traveloka.hotel.featureHotel.domain.HotelViewModel
+import com.traveloka.hotel.featureHotel.util.TRAVEL_PURPOSE_OPTIONS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -33,11 +35,10 @@ fun HotelList(
 ) {
     val context = LocalContext.current
     val hotelListState = viewModel.hotelListState
-    val city = viewModel.city
     val travelPurpose = viewModel.travelPurpose
     val scope = rememberCoroutineScope()
     val listState = rememberLazyListState()
-
+    val suggestions = TRAVEL_PURPOSE_OPTIONS.map { stringResource(id = it) }
 
     val hotelList = remember {
         mutableStateListOf<Hotel>()
@@ -46,11 +47,15 @@ fun HotelList(
         mutableStateOf(false)
     }
 
-    LaunchedEffect(true) {
+    LaunchedEffect(Unit) {
+        viewModel.apply {
+            setCity(viewModel.getCity() ?: "jakarta")
+            setTravelPurpose(suggestions.first())
+        }
         scope.launch(Dispatchers.IO) {
             viewModel.getHotelList(
                 HotelListRequest(
-                    location = city.value,
+                    location = viewModel.getCity() ?: "jakarta",
                     travelPurpose = travelPurpose.value
                 )
             )
