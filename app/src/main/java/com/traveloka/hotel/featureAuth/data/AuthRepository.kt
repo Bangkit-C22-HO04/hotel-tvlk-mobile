@@ -2,12 +2,13 @@ package com.traveloka.hotel.featureAuth.data
 
 import com.traveloka.hotel.core.data.local.IUserPreference
 import com.traveloka.hotel.core.network.ApiService
-import okhttp3.RequestBody
+import com.traveloka.hotel.featureAuth.data.model.login.LoginRequest
+import com.traveloka.hotel.featureAuth.data.model.register.RegisterRequest
 
 class AuthRepository(private val apiService: ApiService, private val preference: IUserPreference) {
 
-    fun register(request: RequestBody) = apiService.postRegister(request)
-    fun login(request: RequestBody) = apiService.postLogin(request)
+    fun register(request: RegisterRequest) = apiService.postRegister(request)
+    fun login(request: LoginRequest) = apiService.postLogin(request)
     fun setToken(token: String) = preference.saveAuthToken(token)
 
     fun logout() {
