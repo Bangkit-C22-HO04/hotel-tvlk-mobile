@@ -36,11 +36,7 @@ class HotelViewModel @Inject constructor(private val repository: HotelRepository
     val hotelListState: State<ResultApi<HotelListResponse>> = _hotelListState
 
     fun getHotelList(request: HotelListRequest) {
-        val body = NetworkUtils.createJsonRequestBody(
-            "location" to request.location,
-            "travel_purposes" to request.travelPurpose
-        )
-        val res = repository.getHotelList(body)
+        val res = repository.getHotelList(request)
         _hotelListState.value = ResultApi.Loading
 
         res.enqueue(object : Callback<HotelListResponse> {

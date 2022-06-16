@@ -62,13 +62,7 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
     }
 
     fun register(request: RegisterRequest) {
-        val body = NetworkUtils.createJsonRequestBody(
-            "email" to request.email,
-            "password" to request.password,
-            "gender" to request.gender,
-            "birth_date" to request.birthDate
-        )
-        val res = authRepository.register(body)
+        val res = authRepository.register(request)
         _registerState.value = ResultApi.Loading
 
         res.enqueue(object : Callback<RegisterResponse> {
@@ -94,11 +88,7 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
     }
 
     fun login(request: LoginRequest) {
-        val body = NetworkUtils.createJsonRequestBody(
-            "email" to request.email,
-            "password" to request.password
-        )
-        val res = authRepository.login(body)
+        val res = authRepository.login(request)
         _loginState.value = ResultApi.Loading
 
         res.enqueue(object : Callback<LoginResponse> {
