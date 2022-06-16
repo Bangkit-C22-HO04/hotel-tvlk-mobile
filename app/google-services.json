@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1085397985111",
+    "project_id": "hotel-mobile-46541",
+    "storage_bucket": "hotel-mobile-46541.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085397985111:android:417d0ab75f26f6c3df8012",
+        "android_client_info": {
+          "package_name": "com.traveloka.hotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085397985111-jgj1kbbrpes2259vb2rbg5i23li8ccq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADRKdu4NHkPXsU8DAJ0JBv7-LbUw4ZFVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085397985111-jgj1kbbrpes2259vb2rbg5i23li8ccq7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
