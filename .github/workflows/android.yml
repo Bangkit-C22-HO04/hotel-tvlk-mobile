@@ -27,4 +27,4 @@ jobs:
         appId: ${{secrets.FIREBASE_APP_ID}}
         token: ${{secrets.FIREBASE_TOKEN}}
         groups: MD
-        file: app/build/outputs/apk/debug/a.apk
+        file: app/build/outputs/apk/debug/mobile-hotel.apk
