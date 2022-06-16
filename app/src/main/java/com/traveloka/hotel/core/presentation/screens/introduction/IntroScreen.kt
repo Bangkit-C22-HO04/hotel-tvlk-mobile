@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.traveloka.hotel.R
+import com.traveloka.hotel.component.WithLocation
 import com.traveloka.hotel.component.WrapperFunc.WithNonAuth
 import com.traveloka.hotel.component.button.MButton
 import com.traveloka.hotel.core.presentation.navigation.HotelScreens
@@ -28,63 +29,66 @@ import com.traveloka.hotel.ui.theme.HotelmobileTheme
 fun IntroScreen(
     navController: NavController
 ) {
-    WithNonAuth(navController = navController) {
-        Column(
-            modifier = Modifier
-                .fillMaxHeight()
-                .fillMaxWidth()
-                .background(brush = Brush.radialGradient(colors = listOf(BlueDark, Blue))),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 56.dp)
-                    .height(45.dp),
-                contentAlignment = Alignment.Center
-            ) {
+    WithLocation {
 
-                Image(
+        WithNonAuth(navController = navController) {
+            Column(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth()
+                    .background(brush = Brush.radialGradient(colors = listOf(BlueDark, Blue))),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Box(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(start = 20.dp),
-                    painter = painterResource(id = R.drawable.logo_white),
-                    contentDescription = "",
-                    contentScale = ContentScale.Fit
-                )
-            }
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 18.dp)
-                    .height(87.dp),
-                contentAlignment = Alignment.Center
-            ) {
+                        .fillMaxWidth()
+                        .padding(bottom = 56.dp)
+                        .height(45.dp),
+                    contentAlignment = Alignment.Center
+                ) {
 
-                Image(
-                    modifier = Modifier.fillMaxSize(),
-                    painter = painterResource(id = R.drawable.image_intro),
-                    contentDescription = "",
-                    contentScale = ContentScale.Fit
+                    Image(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(start = 20.dp),
+                        painter = painterResource(id = R.drawable.logo_white),
+                        contentDescription = "",
+                        contentScale = ContentScale.Fit
+                    )
+                }
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 18.dp)
+                        .height(87.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+
+                    Image(
+                        modifier = Modifier.fillMaxSize(),
+                        painter = painterResource(id = R.drawable.image_intro),
+                        contentDescription = "",
+                        contentScale = ContentScale.Fit
+                    )
+                }
+                Text(
+                    modifier = Modifier.padding(bottom = 50.dp),
+                    text = "Let’s search cheap hotels in 3 easy steps here!",
+                    style = MaterialTheme.typography.body1, color = Color.White
                 )
+                Text(
+                    modifier = Modifier.padding(bottom = 12.dp),
+                    text = "#MulaiAjaDuluTravelokaKemudian”",
+                    style = MaterialTheme.typography.body2,
+                    color = Color.White
+                )
+                MButton(
+                    text = "Let’s Start!",
+                    bgColor = Color.White,
+                    textColor = Blue,
+                    onClick = { navController.navigate(HotelScreens.RegisterScreen.name) })
             }
-            Text(
-                modifier = Modifier.padding(bottom = 50.dp),
-                text = "Let’s search cheap hotels in 3 easy steps here!",
-                style = MaterialTheme.typography.body1, color = Color.White
-            )
-            Text(
-                modifier = Modifier.padding(bottom = 12.dp),
-                text = "#MulaiAjaDuluTravelokaKemudian”",
-                style = MaterialTheme.typography.body2,
-                color = Color.White
-            )
-            MButton(
-                text = "Let’s Start!",
-                bgColor = Color.White,
-                textColor = Blue,
-                onClick = { navController.navigate(HotelScreens.RegisterScreen.name) })
         }
     }
 }
